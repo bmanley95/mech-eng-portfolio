@@ -28,6 +28,8 @@ function Home() {
   }
 
   useEffect(() => {
+    let resizeTimeout: number
+
     const handleScroll = () => {
       const rightColumn = document.querySelector(`.${styles.rightColumn}`)
       if (!rightColumn) return
@@ -62,6 +64,47 @@ function Home() {
       document.documentElement.style.setProperty('--grid-opacity', '0')
     }
 
+    const isDesktop = () => {
+      // In responsive mode, just check screen width - don't be too strict about touch
+      return window.innerWidth > 1024
+    }
+
+    const handlePageScroll = (e: WheelEvent) => {
+      // Only handle custom scrolling on desktop layout (above 1024px)
+      if (!isDesktop()) {
+        return // Let default scrolling behavior handle mobile
+      }
+
+      // Don't prevent default if we're in a scrollable area that should scroll naturally
+      const target = e.target as HTMLElement
+      const rightColumn = document.querySelector(
+        `.${styles.rightColumn}`
+      ) as HTMLElement
+
+      if (rightColumn && rightColumn.contains(target)) {
+        // If scrolling inside the right column, let it scroll naturally
+        return
+      }
+
+      // Check if we have touch support - only skip custom scrolling for actual mobile devices
+      const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+      const isMobileDevice = hasTouch && window.innerWidth <= 1024
+
+      if (isMobileDevice) {
+        // Only skip custom scrolling for actual mobile devices
+        return
+      }
+
+      // For desktop (including responsive mode), redirect scroll to right column
+      e.preventDefault()
+      if (rightColumn) {
+        // Use requestAnimationFrame for smoother scrolling
+        requestAnimationFrame(() => {
+          rightColumn.scrollTop += e.deltaY
+        })
+      }
+    }
+
     // Initialize mouse position on page load
     const initializeMousePosition = () => {
       document.documentElement.style.setProperty('--mouse-x', '50%')
@@ -78,9 +121,37 @@ function Home() {
     // Initialize on mount
     initializeMousePosition()
 
-    // Add event listeners (removed wheel event handler)
+    // Add event listeners
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('wheel', handlePageScroll, { passive: false })
+
+    // Handle window resize to update scroll behavior
+    const handleResize = () => {
+      // Debounce resize events
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        // Force re-evaluation of desktop/mobile state
+        if (!isDesktop()) {
+          // On mobile, make sure we're not preventing any scroll events
+          const rightColumn = document.querySelector(
+            `.${styles.rightColumn}`
+          ) as HTMLElement
+          if (rightColumn) {
+            rightColumn.style.overflowY = 'visible'
+          }
+        } else {
+          const rightColumn = document.querySelector(
+            `.${styles.rightColumn}`
+          ) as HTMLElement
+          if (rightColumn) {
+            rightColumn.style.overflowY = 'auto'
+          }
+        }
+      }, 100)
+    }
+
+    window.addEventListener('resize', handleResize)
 
     return () => {
       if (rightColumn) {
@@ -88,6 +159,9 @@ function Home() {
       }
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseleave', handleMouseLeave)
+      window.removeEventListener('wheel', handlePageScroll)
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(resizeTimeout)
     }
   }, [])
 
@@ -170,7 +244,7 @@ function Home() {
           {/* GROUP D - About Section */}
           <section id="about" className={styles.section}>
             <h2 className={styles.sectionTitle}>About</h2>
-            <div className={styles.sectionContent}>
+            <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 {portfolioConfig.bio.intro}
               </p>
@@ -288,17 +362,9 @@ function Home() {
             </div>
           </section>
 
-          {/* Contact Section */}
           <section id="contact" className={styles.section}>
             <h2 className={styles.sectionTitle}>Contact</h2>
-            <div
-              className={styles.sectionContent}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%',
-              }}
-            >
+            <div className={styles.sectionContent}>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 I'm always interested in discussing new engineering challenges
                 and opportunities to collaborate on innovative projects.
@@ -333,7 +399,6 @@ function Home() {
                   fontWeight: '500',
                   borderBottom: '1px solid transparent',
                   transition: 'border-color 0.3s ease',
-                  marginTop: 'auto',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderBottomColor =

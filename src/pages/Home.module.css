@@ -177,10 +177,6 @@ button:hover,
   display: none;
 }
 
-#about {
-  padding: 0 var(--space-lg);
-}
-
 .sectionContent {
   color: var(--color-text-secondary);
   font-family: var(--font-content);
@@ -211,11 +207,11 @@ button:hover,
 }
 
 .experienceItem:hover .experienceTitle {
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
 }
 
 .experienceItem:hover .experienceTitle svg {
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
 }
 
 .experienceSection:hover .experienceItem:not(:hover) {
@@ -274,11 +270,11 @@ button:hover,
 }
 
 .projectItem:hover .projectTitle {
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
 }
 
 .projectItem:hover .projectTitle svg {
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
 }
 
 .projectItem:hover .projectThumbnail {
@@ -298,7 +294,7 @@ button:hover,
   transition: color 0.3s ease;
 }
 
-/* Desktop layout above 1280px */
+/* Desktop */
 @media (min-width: 1281px) {
   .layoutGrid {
     display: block;
@@ -352,8 +348,8 @@ button:hover,
 
   /* Add padding to about section content to align with experience/project items */
   .aboutContent {
-    padding-left: var(--space-lg) !important;
-    padding-right: var(--space-lg) !important;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
   }
 
   /* Project thumbnail sizing for desktop */
@@ -417,8 +413,8 @@ button:hover,
 
   /* Add padding to about section content to align with experience/project items */
   .aboutContent {
-    padding-left: var(--space-lg) !important;
-    padding-right: var(--space-lg) !important;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
   }
 
   /* Project thumbnail sizing for desktop */
@@ -466,6 +462,10 @@ button:hover,
 
   .rightColumn::-webkit-scrollbar {
     display: block;
+  }
+
+  .section:last-child {
+    padding: 0;
   }
 
   .sectionTitle {

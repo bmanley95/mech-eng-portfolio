@@ -13,6 +13,7 @@ const sections = navigation.map((item) => item.href).reverse()
 
 function Home() {
   const [activeSection, setActiveSection] = useState('about')
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -126,6 +127,9 @@ function Home() {
 
     // Handle window resize to update scroll behavior
     const handleResize = () => {
+      const newWidth = window.innerWidth
+      setWindowWidth(newWidth)
+
       // Force re-evaluation of desktop/mobile state
       if (!isDesktop()) {
         // On mobile, make sure we're not preventing any scroll events
@@ -157,6 +161,50 @@ function Home() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+
+  // Jean Claude van Damme Easter egg for extremely small screens
+  if (windowWidth < 200) {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'var(--color-background)',
+        }}
+      >
+        <a
+          href="https://www.linkedin.com/in/bryce-mcmath-85625a1a3/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <img
+            src="damme.png"
+            alt="If your LinkedIn connection request incorporates a Jean Claude van Damme reference, I will accept it."
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxHeight: '100vh',
+              objectFit: 'contain',
+              cursor: 'pointer',
+            }}
+          />
+        </a>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.container}>

@@ -1,0 +1,14 @@
+Desktop-first CSS
+
+All text is left-aligned
+
+Two column layout
+
+Max width of both columns together is 1280px
+
+Left column is fixed, right column is scrollable with no scrollbar. Scrolling anywhere on the page scrolls the right column only
+
+At screen width 1024px and lower, it goes to a one column layout
+
+Only touch the CSS that is necessary to make the above a reality. There are other parts of the CSS that are correct already.
+

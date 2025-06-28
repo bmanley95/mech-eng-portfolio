@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, ExternalLink } from 'lucide-react'
 import styles from './Home.module.css'
 import { portfolioConfig } from '../data/portfolioConfig'
 
@@ -28,8 +28,6 @@ function Home() {
   }
 
   useEffect(() => {
-    let resizeTimeout: number
-
     const handleScroll = () => {
       const rightColumn = document.querySelector(`.${styles.rightColumn}`)
       if (!rightColumn) return
@@ -128,27 +126,23 @@ function Home() {
 
     // Handle window resize to update scroll behavior
     const handleResize = () => {
-      // Debounce resize events
-      clearTimeout(resizeTimeout)
-      resizeTimeout = setTimeout(() => {
-        // Force re-evaluation of desktop/mobile state
-        if (!isDesktop()) {
-          // On mobile, make sure we're not preventing any scroll events
-          const rightColumn = document.querySelector(
-            `.${styles.rightColumn}`
-          ) as HTMLElement
-          if (rightColumn) {
-            rightColumn.style.overflowY = 'visible'
-          }
-        } else {
-          const rightColumn = document.querySelector(
-            `.${styles.rightColumn}`
-          ) as HTMLElement
-          if (rightColumn) {
-            rightColumn.style.overflowY = 'auto'
-          }
+      // Force re-evaluation of desktop/mobile state
+      if (!isDesktop()) {
+        // On mobile, make sure we're not preventing any scroll events
+        const rightColumn = document.querySelector(
+          `.${styles.rightColumn}`
+        ) as HTMLElement
+        if (rightColumn) {
+          rightColumn.style.overflowY = 'visible'
         }
-      }, 100)
+      } else {
+        const rightColumn = document.querySelector(
+          `.${styles.rightColumn}`
+        ) as HTMLElement
+        if (rightColumn) {
+          rightColumn.style.overflowY = 'auto'
+        }
+      }
     }
 
     window.addEventListener('resize', handleResize)
@@ -161,7 +155,6 @@ function Home() {
       document.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('wheel', handlePageScroll)
       window.removeEventListener('resize', handleResize)
-      clearTimeout(resizeTimeout)
     }
   }, [])
 
@@ -263,16 +256,40 @@ function Home() {
             <h2 className={styles.sectionTitle}>Experience</h2>
             <div className={styles.sectionContent}>
               {portfolioConfig.workExperience.map((job, index) => (
-                <div key={index} className={styles.experienceItem}>
+                <a
+                  key={index}
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.experienceItem}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    // Placeholder - replace with actual URL logic
+                    window.open(
+                      `https://example.com/experience/${index}`,
+                      '_blank'
+                    )
+                  }}
+                >
                   <h3
                     className={styles.experienceTitle}
                     style={{
                       fontFamily: 'var(--font-heading)',
                       color: 'var(--color-text-primary)',
                       marginBottom: 'var(--space-sm)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--space-xs)',
                     }}
                   >
                     {job.title} at {job.company}
+                    <ExternalLink
+                      style={{
+                        width: '1rem',
+                        height: '1rem',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    />
                   </h3>
                   <p
                     style={{
@@ -308,7 +325,7 @@ function Home() {
                       </span>
                     ))}
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </section>
@@ -321,43 +338,76 @@ function Home() {
             <h2 className={styles.sectionTitle}>Projects</h2>
             <div className={styles.sectionContent}>
               {portfolioConfig.projects.map((project, index) => (
-                <div key={index} className={styles.projectItem}>
-                  <h3
-                    className={styles.projectTitle}
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      color: 'var(--color-text-primary)',
-                      marginBottom: 'var(--space-sm)',
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-                  <p style={{ marginBottom: 'var(--space-sm)' }}>
-                    {project.description}
-                  </p>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: 'var(--space-xs)',
-                    }}
-                  >
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        style={{
-                          backgroundColor: 'rgba(20, 184, 166, 0.1)',
-                          color: '#5eead4',
-                          padding: '0.25rem 0.75rem',
-                          borderRadius: '9999px',
-                          fontSize: '0.75rem',
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <a
+                  key={index}
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectItem}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    // Placeholder - replace with actual URL logic
+                    window.open(
+                      `https://example.com/project/${index}`,
+                      '_blank'
+                    )
+                  }}
+                >
+                  <div className={styles.projectThumbnail}>
+                    <img
+                      src="project_placeholder.png"
+                      alt={`${project.title} thumbnail`}
+                      loading="lazy"
+                    />
                   </div>
-                </div>
+                  <div className={styles.projectContent}>
+                    <h3
+                      className={styles.projectTitle}
+                      style={{
+                        fontFamily: 'var(--font-heading)',
+                        color: 'var(--color-text-primary)',
+                        marginBottom: 'var(--space-sm)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--space-xs)',
+                      }}
+                    >
+                      {project.title}
+                      <ExternalLink
+                        style={{
+                          width: '1rem',
+                          height: '1rem',
+                          color: 'var(--color-text-primary)',
+                        }}
+                      />
+                    </h3>
+                    <p style={{ marginBottom: 'var(--space-sm)' }}>
+                      {project.description}
+                    </p>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 'var(--space-xs)',
+                      }}
+                    >
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          style={{
+                            backgroundColor: 'rgba(20, 184, 166, 0.1)',
+                            color: '#5eead4',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '9999px',
+                            fontSize: '0.75rem',
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
               ))}
             </div>
           </section>

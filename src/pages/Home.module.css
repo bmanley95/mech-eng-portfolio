@@ -7,6 +7,14 @@
   position: relative;
 }
 
+/* Custom cursor for clickable links */
+a:hover,
+button:hover,
+.experienceItem:hover,
+.projectItem:hover {
+  cursor: url('cursor_compass.png'), pointer;
+}
+
 .layoutGrid {
   position: relative;
   height: calc(100vh - 2 * var(--space-3xl));
@@ -160,6 +168,11 @@
   flex-direction: column;
 }
 
+.section:last-child {
+  margin-bottom: 0;
+  padding: 0 var(--space-lg);
+}
+
 .sectionTitle {
   display: none;
 }
@@ -184,6 +197,9 @@
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .experienceItem:hover {
@@ -195,6 +211,10 @@
 }
 
 .experienceItem:hover .experienceTitle {
+  color: var(--color-accent) !important;
+}
+
+.experienceItem:hover .experienceTitle svg {
   color: var(--color-accent) !important;
 }
 
@@ -216,6 +236,33 @@
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+}
+
+.projectThumbnail {
+  flex-shrink: 0;
+  width: 150px;
+  height: 90px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.projectThumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectContent {
+  flex: 1;
+  min-width: 0;
 }
 
 .projectItem:hover {
@@ -228,6 +275,18 @@
 
 .projectItem:hover .projectTitle {
   color: var(--color-accent) !important;
+}
+
+.projectItem:hover .projectTitle svg {
+  color: var(--color-accent) !important;
+}
+
+.projectItem:hover .projectThumbnail {
+  border-color: rgba(13, 148, 136, 0.3);
+}
+
+.projectItem:hover .projectThumbnail img {
+  transform: scale(1.05);
 }
 
 .projectSection:hover .projectItem:not(:hover) {
@@ -296,6 +355,12 @@
     padding-left: var(--space-lg) !important;
     padding-right: var(--space-lg) !important;
   }
+
+  /* Project thumbnail sizing for desktop */
+  .projectThumbnail {
+    width: 150px;
+    height: 90px;
+  }
 }
 
 /* Desktop layout between 1025px and 1280px */
@@ -354,6 +419,12 @@
   .aboutContent {
     padding-left: var(--space-lg) !important;
     padding-right: var(--space-lg) !important;
+  }
+
+  /* Project thumbnail sizing for desktop */
+  .projectThumbnail {
+    width: 150px;
+    height: 90px;
   }
 }
 
@@ -418,6 +489,22 @@
   /* Hide navigation in single column mode */
   .groupB {
     display: none;
+  }
+
+  /* Mobile project thumbnails */
+  .projectThumbnail {
+    width: 100px;
+    height: 60px;
+  }
+
+  .projectItem {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .projectItem .projectThumbnail {
+    width: 100%;
+    height: 160px;
   }
 }
 

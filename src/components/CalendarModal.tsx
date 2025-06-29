@@ -33,7 +33,7 @@ function CalendarModal({ isOpen, onClose, calendarUrl }: CalendarModalProps) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Book a Chat</h2>
+          <h2 className={styles.title}>Schedule a meeting</h2>
           <button
             onClick={onClose}
             className={styles.closeButton}
@@ -49,7 +49,7 @@ function CalendarModal({ isOpen, onClose, calendarUrl }: CalendarModalProps) {
             height="100%"
             frameBorder="0"
             scrolling="no"
-            title="Book a meeting"
+            title="Schedule a meeting"
             className={styles.iframe}
           />
         </div>

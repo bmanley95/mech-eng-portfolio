@@ -22,8 +22,8 @@ export const portfolioConfig = {
       'A recent UVic mechanical engineering graduate with quality co-op experience at organizations like <strong>Ballard Power Systems</strong> and <strong>Wiser Marine Technologies</strong>, I ramp up quickly in new environments and know which details need close attention.',
     experience:
       "I'm particularly interested in roles that involve <strong>composite manufacturing, automotive engineering, or simulation-driven development;</strong> postings involving any of those areas excite me greatly. I have a solid foundation in CAD design, thermal analysis, and project management, but I'm looking forward to a wider breadth of experience and deeper specialization in my next role.",
-    personal:
-      "When I'm not engineering, you can find me working on my Acura RSX, rewatching Vinland Saga, or spending quality time with friends or my many siblings (ask me how many I have)",
+    // change below
+    personal: '',
   },
 
   social: {

@@ -223,18 +223,25 @@ function Home() {
           <div className={styles.leftContent}>
             {/* GROUP A */}
             <div className={styles.groupA}>
+              <div className={styles.profilePictureContainer}>
+                <img
+                  src="profile_picture.png"
+                  alt={`${portfolioConfig.name} profile picture`}
+                  className={styles.profilePicture}
+                />
+              </div>
               <div className={styles.headingContainer}>
                 <h1 className={styles.mainHeading}>{portfolioConfig.name}</h1>
-                <div className={styles.profilePictureContainer}>
-                  <img
-                    src="profile_picture.png"
-                    alt={`${portfolioConfig.name} profile picture`}
-                    className={styles.profilePicture}
-                  />
-                </div>
+                <h2 className={styles.subtitle}>{portfolioConfig.title}</h2>
+                <p className={styles.tagline}>{portfolioConfig.tagline}</p>
               </div>
-              <h2 className={styles.subtitle}>{portfolioConfig.title}</h2>
-              <p className={styles.tagline}>{portfolioConfig.tagline}</p>
+              <div className={styles.mobileProfilePictureContainer}>
+                <img
+                  src="profile_picture.png"
+                  alt={`${portfolioConfig.name} profile picture`}
+                  className={styles.mobileProfilePicture}
+                />
+              </div>
             </div>
 
             {/* GROUP B - Navigation */}
@@ -545,7 +552,7 @@ function Home() {
                   fontFamily: 'inherit',
                 }}
               >
-                Book a chat
+                Schedule a meeting
               </button>
             </div>
           </section>

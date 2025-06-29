@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <script>
-      // GitHub Pages SPA redirect
-      const path = window.location.pathname.split('/').slice(2).join('/')
-      if (path) {
-        window.location.replace(
-          window.location.origin +
-            window.location.pathname.split('/').slice(0, 2).join('/') +
-            '/#/' +
-            path
-        )
+      // SPA redirect for custom domain
+      const path = window.location.pathname
+
+      // Redirect any path to hash-based routing for SPA
+      if (path !== '/' && !path.startsWith('/#/')) {
+        const route = path.slice(1) // Remove leading slash
+        if (route) {
+          window.location.replace(window.location.origin + '/#/' + route)
+        }
       }
     </script>
   </head>

@@ -225,7 +225,7 @@ function Home() {
                 <h1 className={styles.mainHeading}>{portfolioConfig.name}</h1>
                 <div className={styles.profilePictureContainer}>
                   <img
-                    src="profile_picture.png"
+                    src="profile_picture.jpeg"
                     alt={`${portfolioConfig.name} profile picture`}
                     className={styles.profilePicture}
                   />

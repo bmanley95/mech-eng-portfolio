@@ -33,7 +33,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/mech-eng-portfolio.git
+   git clone https://github.com/bryce-mcmath/mech-eng-portfolio.git
    cd mech-eng-portfolio
    ```
 
@@ -156,7 +156,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/mech-eng-portfolio/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/bryce-mcmath/mech-eng-portfolio/issues).
 
 ## 📧 Support
 

@@ -62,7 +62,7 @@ a:hover,
 button:hover,
 input:hover,
 textarea:hover {
-  cursor: url('/mech-eng-portfolio/cursor.png'), auto;
+  cursor: url('/cursor.png'), auto;
 }
 
 :root {

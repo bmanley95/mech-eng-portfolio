@@ -1,152 +1,124 @@
 // Portfolio configuration - Edit this file to customize your portfolio
 
+// To change text simple edit the strings in this file
+
+// To change images, add or replace images in the `public` folder and update the paths in this file
+
+// To change your resume, replace the `brandon_manley_resume.pdf` file in the `public` folder with your own PDF file of the same name
+
 export const portfolioConfig = {
-  // Personal Information
   name: 'Brandon Manley',
   title: 'Mechanical Engineer, EIT',
   location: 'British Columbia, Canada',
-  experience: '2+ Years Experience',
   email: 'brm2495@email.com',
-  phone: '(555) 123-4567',
+  tagline: 'Thorough, resourceful. With grit and a dash of humor.',
 
-  // Bio/About
   bio: {
     intro:
-      "I'm a passionate mechanical engineer with over 5 years of experience in product design, manufacturing, and project management. I specialize in CAD design, thermal analysis, and sustainable engineering solutions.",
+      'A recent UVic mechanical engineering graduate with quality co-op experience at organizations like <strong>Ballard Power Systems</strong> and Wiser Marine Technologies, I ramp up quickly and know which details to pay close attention to.',
     experience:
-      "My expertise spans across various industries including automotive, aerospace, and renewable energy. I'm particularly interested in developing innovative solutions that combine engineering excellence with environmental sustainability.",
+      "I'm particularly interested in roles that involve <strong>composite manufacturing, automotive engineering, or simulation-driven development;</strong> postings involving any of those areas excite me greatly. I have a solid foundation in CAD design, thermal analysis, and project management, but I'm looking forward to a wider breadth of experience and deeper specialization in my next role.",
     personal:
-      "When I'm not engineering, you can find me hiking, building RC aircraft, or experimenting with 3D printing new designs.",
+      "When I'm not engineering, you can find me working on my Acura RSX, rewatching Vinland Saga, or spending quality time with friends or my many siblings (ask me how many I have)",
   },
 
-  // Social Links
   social: {
-    linkedin: 'https://linkedin.com/in/johndoe',
-    github: 'https://github.com/johndoe',
+    linkedin: 'https://www.linkedin.com/in/brandon-manley95/',
   },
 
-  // Technical Skills
-  skills: {
-    'CAD & Design': ['SolidWorks', 'AutoCAD', 'Fusion 360', 'Inventor'],
-    'Analysis & Simulation': ['ANSYS', 'MATLAB', 'FEA', 'CFD'],
-    Manufacturing: [
-      'CNC Machining',
-      '3D Printing',
-      'Injection Molding',
-      'Sheet Metal',
-    ],
-    Programming: ['Python', 'MATLAB', 'C++', 'LabVIEW'],
-    'Project Management': [
-      'Agile/Scrum',
-      'Lean Manufacturing',
-      'Six Sigma',
-      'Risk Assessment',
-    ],
-    Certifications: [
-      'PE License',
-      'Six Sigma Green Belt',
-      'PMP Certified',
-      'SolidWorks Professional',
-    ],
-  },
-
-  // Education
-  education: [
-    {
-      degree: 'Master of Science in Mechanical Engineering',
-      school: 'Stanford University',
-      year: '2016 - 2018',
-      specialization: 'Specialization: Thermal Systems & Energy',
-      gpa: 'GPA: 3.8/4.0',
-    },
-    {
-      degree: 'Bachelor of Science in Mechanical Engineering',
-      school: 'UC Berkeley',
-      year: '2012 - 2016',
-      specialization: 'Minor: Computer Science',
-      gpa: 'Magna Cum Laude',
-    },
-  ],
-
-  // Work Experience
   workExperience: [
     {
-      title: 'Senior Mechanical Engineer',
-      company: 'TechCorp Industries',
-      location: 'San Francisco, CA',
-      duration: '2021 - Present',
-      responsibilities: [
-        'Led cross-functional teams in developing next-generation manufacturing equipment',
-        'Improved production efficiency by 35% through lean manufacturing principles',
-        'Managed $2M+ projects from concept to production implementation',
-        'Mentored junior engineers and conducted technical design reviews',
-      ],
+      title: 'Chassis and Suspension Lead',
+      company: 'UVic Formula Hybrid Team',
+      location: 'Victoria, BC',
+      duration: 'Aug 2024 - Present',
+      description:
+        'Redesigned and manufactured improved components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time in years',
+      // edit below
       technologies: [
         'SolidWorks',
         'ANSYS',
         'Lean Manufacturing',
         'Project Management',
       ],
-      link: '#',
+      link: 'https://uvicformulahybrid.wordpress.com/',
     },
     {
-      title: 'Mechanical Engineer',
-      company: 'Innovation Labs Inc.',
-      location: 'Palo Alto, CA',
-      duration: '2019 - 2021',
-      responsibilities: [
-        'Designed and prototyped sustainable energy storage systems',
-        'Conducted thermal and structural analysis using ANSYS and MATLAB',
-        'Collaborated with R&D teams on patent applications (3 patents filed)',
-        'Reduced material costs by 20% through design optimization',
-      ],
+      title: 'R&D Design Engineer',
+      company: 'University of Victoria',
+      location: 'Victoria, BC',
+      duration: 'Sep 2024 - Dec 2024',
+      description: 'Designed and prototyped [BLAH BLAH BLAH]',
       technologies: ['MATLAB', 'CFD Analysis', 'Patent Applications'],
-      link: null,
+      link: 'https://www.uvic.ca/ecs/research-and-industry/ecs-research/index.php',
     },
     {
-      title: 'Junior Mechanical Engineer',
-      company: 'Precision Manufacturing Co.',
-      location: 'San Jose, CA',
-      duration: '2018 - 2019',
-      responsibilities: [
+      title: 'Agricultural Engineer',
+      company: 'Wiser Marine Technologies',
+      location: 'Victoria, BC',
+      duration: 'May 2023 - Aug 2023',
+      description:
+        'Designed and built a prototype for a new agricultural product, with a sustainability focus',
+      // edit below
+      technologies: ['SolidWorks', 'ANSYS', 'Lean Manufacturing'],
+      link: 'http://wisertech.ca/',
+    },
+    {
+      title: 'Mechanical Systems Engineer',
+      company: 'Ballard Power Systems',
+      location: 'Burnaby, BC',
+      duration: 'Sep 2021 - Apr 2022',
+      description:
         'Supported senior engineers in product design and development',
-        'Created detailed technical drawings and specifications',
-        'Performed quality control testing and documentation',
-        'Assisted in manufacturing process improvements',
-      ],
       technologies: ['AutoCAD', 'Quality Control', 'Technical Documentation'],
-      link: null,
+      link: 'https://www.ballard.com/',
     },
   ],
 
-  // Projects
   projects: [
     {
-      title: 'Automated Assembly Line Optimization',
+      title: 'Composite Seat for Formula Hybrid',
       description:
-        'Designed and implemented an automated assembly system that increased production efficiency by 35% while reducing manufacturing defects by 20%.',
+        'Designed, tested, and manufactured an ergonomic composite seat for the UVic Formula Hybrid car, reducing weight by 15% while improving driver comfort and safety.',
+      // edit below
       technologies: [
         'SolidWorks',
         'ANSYS',
         'PLC Programming',
         'Lean Manufacturing',
       ],
-      link: '#',
-      featured: true,
+      // the thumbnails are the ones we wanted drawings for
+      // change below to `composite_seat_thumbnail.png` add a file with the below name to the public folder
+      thumbnailImg: 'project_placeholder.png',
+      // add a file with the below name to the public folder
+      link: 'composite_seat.pdf',
     },
     {
-      title: 'Sustainable Energy Storage System',
+      title: 'Side Pods for Formula Hybrid',
       description:
-        'Developed a novel thermal energy storage solution for renewable energy applications with 40% higher efficiency than existing solutions.',
+        'Designed, tested, and manufactured aerodynamic side pods for the UVic Formula Hybrid racecar, optimizing airflow and reducing drag.',
       technologies: ['MATLAB', 'CFD Analysis', 'Thermodynamics', '3D Printing'],
-      link: null,
-      featured: true,
+      // change below to `side_pods_thumbnail.png` add a file with the below name to the public folder
+      thumbnailImg: 'project_placeholder.png',
+      // add a file with the below name to the public folder
+      link: 'side_pods.pdf',
+    },
+    {
+      title: 'Rear Wing for Formula Hybrid',
+      description:
+        'Designed, tested, and manufactured a high-performance rear wing for the UVic Formula Hybrid racecar, improving downforce and stability at high speeds.',
+      technologies: ['MATLAB', 'CFD Analysis', 'Thermodynamics', '3D Printing'],
+      // change below to `rear_wing_thumbnail.png` add a file with the below name to the public folder
+      thumbnailImg: 'project_placeholder.png',
+      // add a file with the below name to the public folder
+      link: 'rear_wing.pdf',
     },
   ],
 
-  // Additional Info
-  tagline:
-    'I design and build innovative mechanical solutions, from concept to production.',
+  outro: {
+    p1: `Ofcourse hearing from recruiters and engineers is great, but I also love to connect with students, recent grads, and anyone else with a shared interest for building cool stuff - let's watch eachother grow!`,
+    p2: `If you're interested in collaborating, adding a new member to your team, or just want to chat, feel free to reach out.`,
+  },
 }
 
 export default portfolioConfig

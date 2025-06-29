@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Github, Linkedin, Mail, MapPin, ExternalLink } from 'lucide-react'
+import {
+  Linkedin,
+  Mail,
+  MapPin,
+  ExternalLink,
+  Sparkle as LucideSparkle,
+} from 'lucide-react'
 import styles from './Home.module.css'
 import { portfolioConfig } from '../data/portfolioConfig'
+import Sparkle from '../components/Sparkle'
 
 const navigation = [
   { name: 'About', href: 'about' },
@@ -214,7 +221,16 @@ function Home() {
           <div className={styles.leftContent}>
             {/* GROUP A */}
             <div className={styles.groupA}>
-              <h1 className={styles.mainHeading}>{portfolioConfig.name}</h1>
+              <div className={styles.headingContainer}>
+                <h1 className={styles.mainHeading}>{portfolioConfig.name}</h1>
+                <div className={styles.profilePictureContainer}>
+                  <img
+                    src="profile_picture.png"
+                    alt={`${portfolioConfig.name} profile picture`}
+                    className={styles.profilePicture}
+                  />
+                </div>
+              </div>
               <h2 className={styles.subtitle}>{portfolioConfig.title}</h2>
               <p className={styles.tagline}>{portfolioConfig.tagline}</p>
             </div>
@@ -244,18 +260,6 @@ function Home() {
             <ul className={styles.socialList}>
               <li>
                 <a
-                  href={portfolioConfig.social.github}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label="GitHub (opens in a new tab)"
-                  title="GitHub"
-                  className={styles.socialLink}
-                >
-                  <Github className={styles.socialIcon} />
-                </a>
-              </li>
-              <li>
-                <a
                   href={portfolioConfig.social.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
@@ -263,7 +267,10 @@ function Home() {
                   title="LinkedIn"
                   className={styles.socialLink}
                 >
-                  <Linkedin className={styles.socialIcon} />
+                  <Linkedin
+                    className={styles.socialIcon}
+                    style={{ verticalAlign: 'bottom' }}
+                  />
                 </a>
               </li>
               <li>
@@ -273,7 +280,29 @@ function Home() {
                   title="Email"
                   className={styles.socialLink}
                 >
-                  <Mail className={styles.socialIcon} />
+                  <Mail
+                    className={styles.socialIcon}
+                    style={{ verticalAlign: 'bottom' }}
+                  />
+                </a>
+              </li>
+              <li style={{ position: 'relative' }}>
+                <Sparkle
+                  top={3}
+                  right={-12}
+                  size={10}
+                  color={'#D4AF37'}
+                  svg={<LucideSparkle size={16} fill={'#D4AF37'} />}
+                />
+                <a
+                  href="brandon_manley_resume.pdf"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Resume (opens in a new tab)"
+                  title="Resume"
+                  className={styles.socialLink}
+                >
+                  Resume
                 </a>
               </li>
             </ul>
@@ -286,13 +315,23 @@ function Home() {
           <section id="about" className={styles.section}>
             <h2 className={styles.sectionTitle}>About</h2>
             <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
-              <p style={{ marginBottom: 'var(--space-md)' }}>
-                {portfolioConfig.bio.intro}
-              </p>
-              <p style={{ marginBottom: 'var(--space-md)' }}>
-                {portfolioConfig.bio.experience}
-              </p>
-              <p>{portfolioConfig.bio.personal}</p>
+              <p
+                style={{ marginBottom: 'var(--space-md)' }}
+                dangerouslySetInnerHTML={{
+                  __html: portfolioConfig.bio.intro,
+                }}
+              />
+              <p
+                style={{ marginBottom: 'var(--space-md)' }}
+                dangerouslySetInnerHTML={{
+                  __html: portfolioConfig.bio.experience,
+                }}
+              />
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: portfolioConfig.bio.personal,
+                }}
+              />
             </div>
           </section>
 
@@ -306,24 +345,23 @@ function Home() {
               {portfolioConfig.workExperience.map((job, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={job.link || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.experienceItem}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    // Placeholder - replace with actual URL logic
-                    window.open(
-                      `https://example.com/experience/${index}`,
-                      '_blank'
-                    )
-                  }}
+                  onClick={
+                    job.link
+                      ? undefined
+                      : (e) => {
+                          e.preventDefault()
+                          // No link available for this experience
+                        }
+                  }
                 >
                   <h3
                     className={styles.experienceTitle}
                     style={{
                       fontFamily: 'var(--font-heading)',
-                      color: 'var(--color-text-primary)',
                       marginBottom: 'var(--space-sm)',
                       display: 'flex',
                       alignItems: 'center',
@@ -331,13 +369,15 @@ function Home() {
                     }}
                   >
                     {job.title} at {job.company}
-                    <ExternalLink
-                      style={{
-                        width: '1rem',
-                        height: '1rem',
-                        color: 'var(--color-text-primary)',
-                      }}
-                    />
+                    {job.link && (
+                      <ExternalLink
+                        style={{
+                          width: '1rem',
+                          height: '1rem',
+                          color: 'var(--color-text-primary)',
+                        }}
+                      />
+                    )}
                   </h3>
                   <p
                     style={{
@@ -349,7 +389,7 @@ function Home() {
                     {job.duration} • {job.location}
                   </p>
                   <p style={{ marginBottom: 'var(--space-sm)' }}>
-                    {job.responsibilities[0]}
+                    {job.description}
                   </p>
                   <div
                     style={{
@@ -363,7 +403,7 @@ function Home() {
                         key={techIndex}
                         style={{
                           backgroundColor: 'rgba(20, 184, 166, 0.1)',
-                          color: '#5eead4',
+                          color: 'var(--color-accent)',
                           padding: '0.25rem 0.75rem',
                           borderRadius: '9999px',
                           fontSize: '0.75rem',
@@ -388,22 +428,22 @@ function Home() {
               {portfolioConfig.projects.map((project, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={project.link || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.projectItem}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    // Placeholder - replace with actual URL logic
-                    window.open(
-                      `https://example.com/project/${index}`,
-                      '_blank'
-                    )
-                  }}
+                  onClick={
+                    project.link
+                      ? undefined
+                      : (e) => {
+                          e.preventDefault()
+                          // No link available for this project
+                        }
+                  }
                 >
                   <div className={styles.projectThumbnail}>
                     <img
-                      src="project_placeholder.png"
+                      src={project.thumbnailImg || 'project_placeholder.png'}
                       alt={`${project.title} thumbnail`}
                       loading="lazy"
                     />
@@ -413,7 +453,6 @@ function Home() {
                       className={styles.projectTitle}
                       style={{
                         fontFamily: 'var(--font-heading)',
-                        color: 'var(--color-text-primary)',
                         marginBottom: 'var(--space-sm)',
                         display: 'flex',
                         alignItems: 'center',
@@ -421,13 +460,15 @@ function Home() {
                       }}
                     >
                       {project.title}
-                      <ExternalLink
-                        style={{
-                          width: '1rem',
-                          height: '1rem',
-                          color: 'var(--color-text-primary)',
-                        }}
-                      />
+                      {project.link && (
+                        <ExternalLink
+                          style={{
+                            width: '1rem',
+                            height: '1rem',
+                            color: 'var(--color-text-primary)',
+                          }}
+                        />
+                      )}
                     </h3>
                     <p style={{ marginBottom: 'var(--space-sm)' }}>
                       {project.description}
@@ -444,7 +485,7 @@ function Home() {
                           key={techIndex}
                           style={{
                             backgroundColor: 'rgba(20, 184, 166, 0.1)',
-                            color: '#5eead4',
+                            color: 'var(--color-accent)',
                             padding: '0.25rem 0.75rem',
                             borderRadius: '9999px',
                             fontSize: '0.75rem',
@@ -464,13 +505,10 @@ function Home() {
             <h2 className={styles.sectionTitle}>Contact</h2>
             <div className={styles.sectionContent}>
               <p style={{ marginBottom: 'var(--space-md)' }}>
-                I'm always interested in discussing new engineering challenges
-                and opportunities to collaborate on innovative projects.
+                {portfolioConfig.outro.p1}
               </p>
               <p style={{ marginBottom: 'var(--space-lg)' }}>
-                Whether you're looking for a mechanical engineer for your team,
-                need consulting on a project, or just want to connect, I'd love
-                to hear from you.
+                {portfolioConfig.outro.p2}
               </p>
               <div
                 style={{
@@ -495,18 +533,12 @@ function Home() {
                   color: 'var(--color-accent)',
                   textDecoration: 'none',
                   fontWeight: '500',
-                  borderBottom: '1px solid transparent',
+                  borderBottom: '1px solid var(--color-accent)',
                   transition: 'border-color 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderBottomColor =
-                    'var(--color-accent)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderBottomColor = 'transparent'
+                  paddingBottom: '3px',
                 }}
               >
-                Get In Touch
+                Get in touch
               </a>
             </div>
           </section>

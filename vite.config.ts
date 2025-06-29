@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Changed from '/mech-eng-portfolio/' for custom domain
+  base: '/mech-eng-portfolio/', // Changed back for GitHub Pages
   build: {
     outDir: 'dist',
   },

@@ -13,10 +13,9 @@ export const portfolioConfig = {
   email: 'brm2495@email.com',
   tagline: 'Thorough, resourceful. With grit and a dash of humor.',
 
-  // Google Calendar booking URL - replace with your own calendar scheduling link
+  // Google Calendar booking URL - replace with your own Google Calendar appointment schedule link
   calendarUrl:
-    'https://calendar.google.com/calendar/embed?src=190943d243c916de91e240a3d1407cc9fa04ded286e9bf2ad7156e9de122e122%40group.calendar.google.com&ctz=UTC',
-
+    'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1OeO1TcU8PGMwG0MlmiGoA12eV5Wj6haP0n6SyEh9F2ikHYKSW5JqmiZY-3lN0RuBGNaCD6fy_?gv=true',
   bio: {
     intro:
       'A recent UVic mechanical engineering graduate with quality co-op experience at organizations like <strong>Ballard Power Systems</strong> and <strong>Wiser Marine Technologies</strong>, I ramp up quickly in new environments and know which details need close attention.',

@@ -7,7 +7,6 @@
   position: relative;
 }
 
-/* Custom cursor for clickable links */
 a:hover,
 button:hover,
 .experienceItem:hover,
@@ -44,6 +43,7 @@ button:hover,
   flex-wrap: wrap;
   align-items: flex-start;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .profilePictureContainer {
@@ -103,7 +103,6 @@ button:hover,
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-md);
   text-align: left;
 }
 
@@ -258,7 +257,6 @@ button:hover,
   flex: 1;
 }
 
-/* Experience hover effects */
 .experienceItem {
   padding: var(--space-lg) 0;
   margin-bottom: var(--space-lg);
@@ -270,6 +268,17 @@ button:hover,
   display: block;
   text-decoration: none;
   color: inherit;
+}
+
+.externalLinkIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.experienceItem .externalLinkIcon,
+.projectItem .externalLinkIcon {
+  transition: all 0.3s ease;
+  color: var(--color-text-primary);
 }
 
 .experienceItem:hover {
@@ -284,8 +293,9 @@ button:hover,
   color: var(--color-accent);
 }
 
-.experienceItem:hover .experienceTitle svg {
+.experienceItem:hover .externalLinkIcon {
   color: var(--color-accent);
+  transform: translate(2px, -2px);
 }
 
 .experienceSection:hover .experienceItem:not(:hover) {
@@ -298,7 +308,6 @@ button:hover,
   transition: color 0.3s ease;
 }
 
-/* Project hover effects */
 .projectItem {
   padding: var(--space-lg) 0;
   margin-bottom: var(--space-2xl);
@@ -348,8 +357,9 @@ button:hover,
   color: var(--color-accent);
 }
 
-.projectItem:hover .projectTitle svg {
+.projectItem:hover .externalLinkIcon {
   color: var(--color-accent);
+  transform: translate(2px, -2px);
 }
 
 .projectItem:hover .projectThumbnail {
@@ -429,13 +439,11 @@ button:hover,
     margin-right: 0;
   }
 
-  /* Add padding to about section content to align with experience/project items */
   .aboutContent {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
   }
 
-  /* Project thumbnail sizing for desktop */
   .projectThumbnail {
     width: 150px;
     height: 90px;
@@ -501,13 +509,11 @@ button:hover,
     margin-right: 0;
   }
 
-  /* Add padding to about section content to align with experience/project items */
   .aboutContent {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
   }
 
-  /* Project thumbnail sizing for desktop */
   .projectThumbnail {
     width: 150px;
     height: 90px;
@@ -524,7 +530,6 @@ button:hover,
     display: flex;
     flex-direction: column;
     height: auto;
-    gap: var(--space-2xl);
   }
 
   .leftColumn {
@@ -534,7 +539,7 @@ button:hover,
     transform: none;
     width: 100%;
     height: auto;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-md);
     padding: 0;
   }
 

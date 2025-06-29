@@ -48,9 +48,10 @@ function CalendarModal({ isOpen, onClose, calendarUrl }: CalendarModalProps) {
             width="100%"
             height="100%"
             frameBorder="0"
-            scrolling="no"
+            scrolling="auto"
             title="Schedule a meeting"
             className={styles.iframe}
+            allow="geolocation"
           />
         </div>
       </div>

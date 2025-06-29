@@ -379,13 +379,7 @@ function Home() {
                   >
                     {job.title} at {job.company}
                     {job.link && (
-                      <ExternalLink
-                        style={{
-                          width: '1rem',
-                          height: '1rem',
-                          color: 'var(--color-text-primary)',
-                        }}
-                      />
+                      <ExternalLink className={styles.externalLinkIcon} />
                     )}
                   </h3>
                   <p
@@ -470,13 +464,7 @@ function Home() {
                     >
                       {project.title}
                       {project.link && (
-                        <ExternalLink
-                          style={{
-                            width: '1rem',
-                            height: '1rem',
-                            color: 'var(--color-text-primary)',
-                          }}
-                        />
+                        <ExternalLink className={styles.externalLinkIcon} />
                       )}
                     </h3>
                     <p style={{ marginBottom: 'var(--space-sm)' }}>

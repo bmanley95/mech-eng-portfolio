@@ -1,4 +1,4 @@
-// Portfolio configuration - Edit this file to customize your portfolio
+// Portfolio configuration - edit this file to customize your portfolio
 
 // To change text simple edit the strings in this file
 
@@ -12,6 +12,10 @@ export const portfolioConfig = {
   location: 'British Columbia, Canada',
   email: 'brm2495@email.com',
   tagline: 'Thorough, resourceful. With grit and a dash of humor.',
+
+  // Google Calendar booking URL - replace with your own calendar scheduling link
+  calendarUrl:
+    'https://calendar.google.com/calendar/embed?src=190943d243c916de91e240a3d1407cc9fa04ded286e9bf2ad7156e9de122e122%40group.calendar.google.com&ctz=UTC',
 
   bio: {
     intro:
@@ -34,7 +38,6 @@ export const portfolioConfig = {
       duration: 'Aug 2024 - Present',
       description:
         'Redesigned and manufactured improved components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time in years',
-      // edit below
       technologies: [
         'SolidWorks',
         'ANSYS',
@@ -48,7 +51,7 @@ export const portfolioConfig = {
       company: 'University of Victoria',
       location: 'Victoria, BC',
       duration: 'Sep 2024 - Dec 2024',
-      description: 'Designed and prototyped [BLAH BLAH BLAH]',
+      description: 'Designed and prototyped...',
       technologies: ['MATLAB', 'CFD Analysis', 'Patent Applications'],
       link: 'https://www.uvic.ca/ecs/research-and-industry/ecs-research/index.php',
     },
@@ -59,7 +62,6 @@ export const portfolioConfig = {
       duration: 'May 2023 - Aug 2023',
       description:
         'Designed and built a prototype for a new agricultural product, with a sustainability focus',
-      // edit below
       technologies: ['SolidWorks', 'ANSYS', 'Lean Manufacturing'],
       link: 'http://wisertech.ca/',
     },
@@ -80,7 +82,6 @@ export const portfolioConfig = {
       title: 'Composite Seat for Formula Hybrid',
       description:
         'Designed, tested, and manufactured an ergonomic composite seat for the UVic Formula Hybrid car, reducing weight by 15% while improving driver comfort and safety.',
-      // edit below
       technologies: [
         'SolidWorks',
         'ANSYS',

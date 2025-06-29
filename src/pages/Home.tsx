@@ -9,6 +9,7 @@ import {
 import styles from './Home.module.css'
 import { portfolioConfig } from '../data/portfolioConfig'
 import Sparkle from '../components/Sparkle'
+import CalendarModal from '../components/CalendarModal'
 
 const navigation = [
   { name: 'About', href: 'about' },
@@ -21,6 +22,7 @@ const sections = navigation.map((item) => item.href).reverse()
 function Home() {
   const [activeSection, setActiveSection] = useState('about')
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -225,7 +227,7 @@ function Home() {
                 <h1 className={styles.mainHeading}>{portfolioConfig.name}</h1>
                 <div className={styles.profilePictureContainer}>
                   <img
-                    src="profile_picture.jpeg"
+                    src="profile_picture.png"
                     alt={`${portfolioConfig.name} profile picture`}
                     className={styles.profilePicture}
                   />
@@ -527,23 +529,33 @@ function Home() {
                 />
                 <span>{portfolioConfig.location}</span>
               </div>
-              <a
-                href={`mailto:${portfolioConfig.email}`}
+              <button
+                onClick={() => setIsCalendarOpen(true)}
                 style={{
+                  background: 'none',
+                  border: 'none',
                   color: 'var(--color-accent)',
                   textDecoration: 'none',
                   fontWeight: '500',
                   borderBottom: '1px solid var(--color-accent)',
                   transition: 'border-color 0.3s ease',
                   paddingBottom: '3px',
+                  cursor: 'pointer',
+                  fontSize: 'inherit',
+                  fontFamily: 'inherit',
                 }}
               >
-                Get in touch
-              </a>
+                Book a chat
+              </button>
             </div>
           </section>
         </main>
       </div>
+      <CalendarModal
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
+        calendarUrl={portfolioConfig.calendarUrl}
+      />
     </div>
   )
 }

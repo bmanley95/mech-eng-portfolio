@@ -295,7 +295,7 @@ function Home() {
                   svg={<LucideSparkle size={16} fill={'#D4AF37'} />}
                 />
                 <a
-                  href="brandon_manley_resume.pdf"
+                  href="Brandon_Manley_Resume.pdf"
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="Resume (opens in a new tab)"

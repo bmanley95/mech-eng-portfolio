@@ -14,8 +14,8 @@ import { trackPageView, trackEvent } from '../utils/analytics'
 
 const navigation = [
   { name: 'About', href: 'about' },
-  { name: 'Experience', href: 'experience' },
   { name: 'Projects', href: 'projects' },
+  { name: 'Experience', href: 'experience' },
 ]
 
 const sections = navigation.map((item) => item.href).reverse()
@@ -338,60 +338,6 @@ function Home() {
             </div>
           </section>
 
-          {/* GROUP E - Experience Section */}
-          <section
-            id="experience"
-            className={`${styles.section} ${styles.experienceSection}`}
-          >
-            <h2 className={styles.sectionTitle}>Experience</h2>
-            <div className={styles.sectionContent}>
-              {portfolioConfig.workExperience.map((job, index) => (
-                <a
-                  key={index}
-                  href={job.link || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.experienceItem}
-                  onClick={
-                    job.link
-                      ? () =>
-                          trackEvent(
-                            'click_experience',
-                            'experience',
-                            job.company
-                          )
-                      : (e) => {
-                          e.preventDefault()
-                          // No link available for this experience
-                        }
-                  }
-                >
-                  <h3
-                    className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
-                  >
-                    {job.title} at {job.company}
-                    {job.link && (
-                      <ExternalLink className={styles.externalLinkIcon} />
-                    )}
-                  </h3>
-                  <p className={styles.jobMeta}>
-                    {job.duration} • {job.location}
-                  </p>
-                  <p className={styles.spacedParagraphSmall}>
-                    {job.description}
-                  </p>
-                  <div className={styles.techBadgesContainer}>
-                    {job.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className={styles.techBadge}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-
           {/* GROUP F - Projects Section */}
           <section
             id="projects"
@@ -442,6 +388,60 @@ function Home() {
                         </span>
                       ))}
                     </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* GROUP E - Experience Section */}
+          <section
+            id="experience"
+            className={`${styles.section} ${styles.experienceSection}`}
+          >
+            <h2 className={styles.sectionTitle}>Experience</h2>
+            <div className={styles.sectionContent}>
+              {portfolioConfig.workExperience.map((job, index) => (
+                <a
+                  key={index}
+                  href={job.link || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.experienceItem}
+                  onClick={
+                    job.link
+                      ? () =>
+                          trackEvent(
+                            'click_experience',
+                            'experience',
+                            job.company
+                          )
+                      : (e) => {
+                          e.preventDefault()
+                          // No link available for this experience
+                        }
+                  }
+                >
+                  <h3
+                    className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
+                  >
+                    {job.title} at {job.company}
+                    {job.link && (
+                      <ExternalLink className={styles.externalLinkIcon} />
+                    )}
+                  </h3>
+                  <p className={styles.jobMeta}>
+                    {job.duration} • {job.location}
+                  </p>
+                  <p className={styles.spacedParagraphSmall}>
+                    {job.description}
+                  </p>
+                  <div className={styles.techBadgesContainer}>
+                    {job.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className={styles.techBadge}>
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </a>
               ))}

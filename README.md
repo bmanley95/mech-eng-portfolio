@@ -129,6 +129,34 @@ CSS custom properties in `src/index.css`:
 }
 ```
 
+### Google Analytics 4 Setup
+
+The portfolio includes privacy-friendly GA4 integration:
+
+1. **Create GA4 Property**:
+   - Go to [Google Analytics](https://analytics.google.com/)
+   - Create a new GA4 property
+   - Copy your Measurement ID (format: `G-XXXXXXXXXX`)
+
+2. **Configure Environment Variable**:
+
+   ```bash
+   # Create .env file in project root
+   echo "VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX" > .env
+   ```
+
+3. **Privacy Features Included**:
+   - IP anonymization enabled
+   - Google signals disabled
+   - Ad personalization disabled
+   - User opt-out support
+
+4. **Event Tracking**:
+   - Page views and section navigation
+   - External link clicks (social, experience, projects)
+   - Resume downloads
+   - Calendar modal interactions
+
 ## 📦 Building for Production
 
 ```bash
@@ -260,11 +288,16 @@ nvm use lts/jod
    - Create Google Calendar appointment schedule
    - Update `calendarUrl` in portfolio config
 
-4. **✅ Configure Deployment**
+4. **✅ Setup Google Analytics** (Optional)
+   - Create a GA4 property in Google Analytics
+   - Copy your Measurement ID (G-XXXXXXXXXX)
+   - Add to `.env` file: `VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX`
+
+5. **✅ Configure Deployment**
    - For GitHub Pages: Set `base: '/repository-name/'` in `vite.config.ts`
    - For custom domain: Set `base: '/'` and add `CNAME` file
 
-5. **✅ Deploy**
+6. **✅ Deploy**
    - Push to GitHub and enable Pages in repository settings
    - Or configure custom domain DNS settings
 
@@ -275,5 +308,6 @@ nvm use lts/jod
 - **SEO**: Complete meta tags, structured data, and sitemap
 - **Accessibility**: Semantic HTML and proper ARIA labels
 - **Mobile-First**: Responsive design with touch-friendly interactions
+- **Google Analytics 4**: Privacy-friendly analytics with event tracking
 
 ---

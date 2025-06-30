@@ -10,6 +10,7 @@ import styles from './Home.module.css'
 import { portfolioConfig } from '../data/portfolioConfig'
 import Sparkle from '../components/Sparkle'
 import CalendarModal from '../components/CalendarModal'
+import { trackPageView, trackEvent } from '../utils/analytics'
 
 const navigation = [
   { name: 'About', href: 'about' },
@@ -25,6 +26,9 @@ function Home() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 
   const scrollToSection = (sectionId: string) => {
+    // Track navigation clicks
+    trackEvent('navigate_to_section', 'navigation', sectionId)
+
     const element = document.getElementById(sectionId)
     const rightColumn = document.querySelector(`.${styles.rightColumn}`)
     if (element && rightColumn) {
@@ -38,6 +42,9 @@ function Home() {
   }
 
   useEffect(() => {
+    // Track page view on initial load
+    trackPageView('Portfolio - Home')
+
     const handleScroll = () => {
       const rightColumn = document.querySelector(`.${styles.rightColumn}`)
       if (!rightColumn) return
@@ -47,7 +54,13 @@ function Home() {
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(section)
+          setActiveSection((prevActiveSection) => {
+            if (prevActiveSection !== section) {
+              // Track section views
+              trackEvent('view_section', 'navigation', section)
+            }
+            return section
+          })
           break
         }
       }
@@ -251,6 +264,9 @@ function Home() {
                   aria-label="LinkedIn (opens in a new tab)"
                   title="LinkedIn"
                   className={styles.socialLink}
+                  onClick={() =>
+                    trackEvent('click_social', 'social', 'linkedin')
+                  }
                 >
                   <Linkedin
                     className={`${styles.socialIcon} ${styles.socialIconAligned}`}
@@ -263,6 +279,7 @@ function Home() {
                   aria-label="Email"
                   title="Email"
                   className={styles.socialLink}
+                  onClick={() => trackEvent('click_social', 'social', 'email')}
                 >
                   <Mail
                     className={`${styles.socialIcon} ${styles.socialIconAligned}`}
@@ -284,6 +301,9 @@ function Home() {
                   aria-label="Resume (opens in a new tab)"
                   title="Resume"
                   className={styles.socialLink}
+                  onClick={() =>
+                    trackEvent('download_resume', 'documents', 'pdf')
+                  }
                 >
                   Resume
                 </a>
@@ -334,7 +354,12 @@ function Home() {
                   className={styles.experienceItem}
                   onClick={
                     job.link
-                      ? undefined
+                      ? () =>
+                          trackEvent(
+                            'click_experience',
+                            'experience',
+                            job.company
+                          )
                       : (e) => {
                           e.preventDefault()
                           // No link available for this experience
@@ -383,7 +408,8 @@ function Home() {
                   className={styles.projectItem}
                   onClick={
                     project.link
-                      ? undefined
+                      ? () =>
+                          trackEvent('click_project', 'projects', project.title)
                       : (e) => {
                           e.preventDefault()
                           // No link available for this project
@@ -436,7 +462,10 @@ function Home() {
                 <span>{portfolioConfig.location}</span>
               </div>
               <button
-                onClick={() => setIsCalendarOpen(true)}
+                onClick={() => {
+                  trackEvent('open_calendar', 'contact', 'schedule_meeting')
+                  setIsCalendarOpen(true)
+                }}
                 className={styles.contactButton}
               >
                 Schedule a meeting

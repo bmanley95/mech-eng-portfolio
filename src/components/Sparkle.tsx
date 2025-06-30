@@ -8,7 +8,7 @@ interface SparkleProps {
   svg: React.ReactNode
 }
 
-// Once every five seconds, a sparkle will spin for three seconds
+// Once every four seconds, a sparkle will spin for three seconds
 const duration = 3000 // ms
 const delay = 4000 // ms
 
@@ -22,6 +22,11 @@ const Sparkle = ({ color, size, top, right, svg }: SparkleProps) => {
     let currentRotation = 0
 
     const animateSparkle = () => {
+      // reset when nearing maximum integer size
+      if (currentRotation >= Number.MAX_SAFE_INTEGER - 361) {
+        currentRotation = 0
+      }
+
       // Set starting rotation
       setRotation(currentRotation)
       setOpacity(0)

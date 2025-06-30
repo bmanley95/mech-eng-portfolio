@@ -218,36 +218,6 @@ public/
 └── CNAME              # Custom domain configuration
 ```
 
-## 🎨 Key Components
-
-### Sparkle Animation
-
-```typescript
-<Sparkle
-  top={3}
-  right={-12}
-  size={10}
-  color={'#D4AF37'}
-  svg={<LucideSparkle size={16} fill={'#D4AF37'} />}
-/>
-```
-
-### Calendar Modal
-
-```typescript
-<CalendarModal
-  isOpen={isCalendarOpen}
-  onClose={() => setIsCalendarOpen(false)}
-  calendarUrl={portfolioConfig.calendarUrl}
-/>
-```
-
-### Interactive Grid Background
-
-- Mouse-responsive engineering grid pattern
-- Opacity changes based on mouse movement
-- Automatic hiding when mouse leaves viewport
-
 ## 🔧 Development Features
 
 - **Hot Module Replacement**: Instant updates during development

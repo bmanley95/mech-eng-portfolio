@@ -64,7 +64,7 @@ function Home() {
       document.documentElement.style.setProperty('--mouse-y', `${y}%`)
 
       // Show grid on mouse movement with reduced opacity
-      document.documentElement.style.setProperty('--grid-opacity', '0.6')
+      document.documentElement.style.setProperty('--grid-opacity', '0.3')
     }
 
     const handleMouseLeave = () => {
@@ -174,41 +174,17 @@ function Home() {
   // Jean Claude van Damme Easter egg for extremely small screens
   if (windowWidth < 200) {
     return (
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'var(--color-background)',
-        }}
-      >
+      <div className={styles.easterEggContainer}>
         <a
           href="https://www.linkedin.com/in/bryce-mcmath-85625a1a3/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%',
-          }}
+          className={styles.easterEggLink}
         >
           <img
             src="damme.png"
             alt="If your LinkedIn connection request incorporates a Jean Claude van Damme reference, I will accept it."
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '100vh',
-              objectFit: 'contain',
-              cursor: 'pointer',
-            }}
+            className={styles.easterEggImage}
           />
         </a>
       </div>
@@ -225,7 +201,7 @@ function Home() {
             <div className={styles.groupA}>
               <div className={styles.profilePictureContainer}>
                 <img
-                  src="profile_picture.png"
+                  src="profile_picture.jpg"
                   alt={`${portfolioConfig.name} profile picture`}
                   className={styles.profilePicture}
                 />
@@ -237,7 +213,7 @@ function Home() {
               </div>
               <div className={styles.mobileProfilePictureContainer}>
                 <img
-                  src="profile_picture.png"
+                  src="profile_picture.jpg"
                   alt={`${portfolioConfig.name} profile picture`}
                   className={styles.mobileProfilePicture}
                 />
@@ -277,8 +253,7 @@ function Home() {
                   className={styles.socialLink}
                 >
                   <Linkedin
-                    className={styles.socialIcon}
-                    style={{ verticalAlign: 'bottom' }}
+                    className={`${styles.socialIcon} ${styles.socialIconAligned}`}
                   />
                 </a>
               </li>
@@ -290,12 +265,11 @@ function Home() {
                   className={styles.socialLink}
                 >
                   <Mail
-                    className={styles.socialIcon}
-                    style={{ verticalAlign: 'bottom' }}
+                    className={`${styles.socialIcon} ${styles.socialIconAligned}`}
                   />
                 </a>
               </li>
-              <li style={{ position: 'relative' }}>
+              <li className={styles.sparkleContainer}>
                 <Sparkle
                   top={3}
                   right={-12}
@@ -325,13 +299,13 @@ function Home() {
             <h2 className={styles.sectionTitle}>About</h2>
             <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
               <p
-                style={{ marginBottom: 'var(--space-md)' }}
+                className={styles.spacedParagraph}
                 dangerouslySetInnerHTML={{
                   __html: portfolioConfig.bio.intro,
                 }}
               />
               <p
-                style={{ marginBottom: 'var(--space-md)' }}
+                className={styles.spacedParagraph}
                 dangerouslySetInnerHTML={{
                   __html: portfolioConfig.bio.experience,
                 }}
@@ -368,50 +342,22 @@ function Home() {
                   }
                 >
                   <h3
-                    className={styles.experienceTitle}
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      marginBottom: 'var(--space-sm)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--space-xs)',
-                    }}
+                    className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
                   >
                     {job.title} at {job.company}
                     {job.link && (
                       <ExternalLink className={styles.externalLinkIcon} />
                     )}
                   </h3>
-                  <p
-                    style={{
-                      fontSize: '0.875rem',
-                      color: 'var(--color-text-secondary)',
-                      marginBottom: 'var(--space-sm)',
-                    }}
-                  >
+                  <p className={styles.jobMeta}>
                     {job.duration} • {job.location}
                   </p>
-                  <p style={{ marginBottom: 'var(--space-sm)' }}>
+                  <p className={styles.spacedParagraphSmall}>
                     {job.description}
                   </p>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: 'var(--space-xs)',
-                    }}
-                  >
+                  <div className={styles.techBadgesContainer}>
                     {job.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        style={{
-                          backgroundColor: 'rgba(20, 184, 166, 0.1)',
-                          color: 'var(--color-accent)',
-                          padding: '0.25rem 0.75rem',
-                          borderRadius: '9999px',
-                          fontSize: '0.75rem',
-                        }}
-                      >
+                      <span key={techIndex} className={styles.techBadge}>
                         {tech}
                       </span>
                     ))}
@@ -453,41 +399,19 @@ function Home() {
                   </div>
                   <div className={styles.projectContent}>
                     <h3
-                      className={styles.projectTitle}
-                      style={{
-                        fontFamily: 'var(--font-heading)',
-                        marginBottom: 'var(--space-sm)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-xs)',
-                      }}
+                      className={`${styles.projectTitle} ${styles.sectionTitleStyle}`}
                     >
                       {project.title}
                       {project.link && (
                         <ExternalLink className={styles.externalLinkIcon} />
                       )}
                     </h3>
-                    <p style={{ marginBottom: 'var(--space-sm)' }}>
+                    <p className={styles.spacedParagraphSmall}>
                       {project.description}
                     </p>
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: 'var(--space-xs)',
-                      }}
-                    >
+                    <div className={styles.techBadgesContainer}>
                       {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          style={{
-                            backgroundColor: 'rgba(20, 184, 166, 0.1)',
-                            color: 'var(--color-accent)',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '9999px',
-                            fontSize: '0.75rem',
-                          }}
-                        >
+                        <span key={techIndex} className={styles.techBadge}>
                           {tech}
                         </span>
                       ))}
@@ -501,44 +425,19 @@ function Home() {
           <section id="contact" className={styles.section}>
             <h2 className={styles.sectionTitle}>Contact</h2>
             <div className={styles.sectionContent}>
-              <p style={{ marginBottom: 'var(--space-md)' }}>
+              <p className={styles.spacedParagraph}>
                 {portfolioConfig.outro.p1}
               </p>
-              <p style={{ marginBottom: 'var(--space-lg)' }}>
+              <p className={styles.spacedParagraphLarge}>
                 {portfolioConfig.outro.p2}
               </p>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--space-md)',
-                  marginBottom: 'var(--space-md)',
-                }}
-              >
-                <MapPin
-                  style={{
-                    height: '1rem',
-                    width: '1rem',
-                    color: 'var(--color-text-secondary)',
-                  }}
-                />
+              <div className={styles.contactInfo}>
+                <MapPin className={styles.contactIcon} />
                 <span>{portfolioConfig.location}</span>
               </div>
               <button
                 onClick={() => setIsCalendarOpen(true)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--color-accent)',
-                  textDecoration: 'none',
-                  fontWeight: '500',
-                  borderBottom: '1px solid var(--color-accent)',
-                  transition: 'border-color 0.3s ease',
-                  paddingBottom: '3px',
-                  cursor: 'pointer',
-                  fontSize: 'inherit',
-                  fontFamily: 'inherit',
-                }}
+                className={styles.contactButton}
               >
                 Schedule a meeting
               </button>

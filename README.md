@@ -1,32 +1,26 @@
 # Mechanical Engineering Portfolio
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Perfect for showcasing mechanical engineering projects, experience, and skills.
-
-## 🚀 Features
-
-- **Modern Design**: Clean, professional interface with smooth animations
-- **Responsive**: Works perfectly on desktop, tablet, and mobile devices
-- **Fast Performance**: Built with Vite for lightning-fast development and builds
-- **SEO Friendly**: Optimized for search engines
-- **Easy Customization**: Simple configuration file for personal information
-- **GitHub Pages Ready**: Automated deployment with GitHub Actions
-
-## 📱 Pages Included
-
-- **About**: Personal introduction, skills, and professional overview
-- **Projects**: Portfolio of engineering projects with detailed descriptions
-- **Resume**: Professional experience, education, and certifications
-- **Contact**: Contact form and professional information
+A modern, responsive, two-column mechanical engineering portfolio website built with React, TypeScript, and CSS Modules. Features interactive elements, smooth animations, and Google Calendar integration for easy meeting booking.
 
 ## 🛠️ Tech Stack
 
-- **React 19** - Modern UI library
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Smooth animations
-- **React Router** - Client-side routing
-- **Lucide React** - Beautiful icons
-- **Vite** - Fast build tool
+- **React 19** - Modern UI library with latest features
+- **TypeScript** - Type-safe development
+- **CSS Modules** - Scoped styling with CSS custom properties
+- **Vite** - Lightning-fast development and builds
+- **Lucide React** - Beautiful, consistent icons
+
+## 📱 Layout Structure
+
+### Desktop (1025px+)
+
+- **Left Column**: Fixed sidebar with profile, navigation, and social links
+- **Right Column**: Scrollable content with fade effects
+
+### Mobile (1024px and below)
+
+- **Single Column**: Stacked layout with sticky section headers
+- **Hidden Navigation**: Simplified mobile experience
 
 ## 🚀 Quick Start
 
@@ -54,26 +48,86 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 ## ⚙️ Customization
 
-### Personal Information
+### Portfolio Configuration
 
-Edit `src/data/portfolioConfig.ts` to customize:
+All content is managed through `src/data/portfolioConfig.ts`:
 
-- Personal details (name, title, contact info)
-- Bio and about section
-- Skills and certifications
-- Work experience
-- Education
-- Social media links
+```typescript
+export const portfolioConfig = {
+  // Personal Information
+  name: 'Your Name',
+  title: 'Your Title',
+  location: 'Your Location',
+  email: 'your@email.com',
+  tagline: 'Your personal tagline',
 
-### Projects
+  // Google Calendar Integration
+  calendarUrl: 'https://calendar.google.com/calendar/appointments/...',
 
-Update the projects array in `src/pages/Projects.tsx` with your own projects.
+  // Bio sections with HTML support
+  bio: {
+    intro: 'Your introduction with <strong>HTML formatting</strong>',
+    experience: 'Your experience description',
+    personal: 'Personal interests and hobbies',
+  },
 
-### Styling
+  // Social links
+  social: {
+    linkedin: 'https://linkedin.com/in/yourprofile',
+  },
 
-- Modify `tailwind.config.js` for theme customization
-- Edit component styles in individual `.tsx` files
-- Global styles in `src/index.css`
+  // Work experience with external links
+  workExperience: [
+    {
+      title: 'Job Title',
+      company: 'Company Name',
+      location: 'Location',
+      duration: 'Date Range',
+      description: 'Job description',
+      technologies: ['Tech1', 'Tech2'],
+      link: 'https://company-website.com', // Optional
+    },
+  ],
+
+  // Projects with thumbnails and links
+  projects: [
+    {
+      title: 'Project Name',
+      description: 'Project description',
+      technologies: ['Tech1', 'Tech2'],
+      thumbnailImg: 'project-image.png', // Place in public folder
+      link: 'project-link.pdf', // Optional, for PDFs or external links
+    },
+  ],
+}
+```
+
+### Asset Management
+
+- **Profile Pictures**: Place in `public/` folder and reference in config
+- **Project Thumbnails**: Add images to `public/` and reference in project config
+- **Resume**: Replace `brandon_manley_resume.pdf` in `public/` folder
+- **Favicon**: Replace `favicon.png` in `public/` folder
+
+### Google Calendar Setup
+
+1. **Create Appointment Schedule** in Google Calendar
+2. **Get Booking URL** from your appointment schedule settings (usually shows up as <iframe src="URL_HERE" ...>)
+3. **Update Config** with your calendar URL in `portfolioConfig.ts`
+
+### Styling Customization
+
+CSS custom properties in `src/index.css`:
+
+```css
+:root {
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-accent: #14b8a6;
+  --color-background: #0f172a;
+  /* Spacing, fonts, and other design tokens */
+}
+```
 
 ## 📦 Building for Production
 
@@ -85,83 +139,175 @@ The built files will be in the `dist` directory.
 
 ## 🌐 Deployment
 
-### GitHub Pages (Recommended)
+### GitHub Pages
 
-1. **Push to GitHub**
+1. **Configure for GitHub Pages**
 
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
+   ```typescript
+   // vite.config.ts
+   export default defineConfig({
+     base: '/your-repository-name/', // Match your GitHub repo name
+   })
    ```
 
-2. **Enable GitHub Pages**
-   - Go to your repository settings
-   - Navigate to "Pages" section
-   - Select "GitHub Actions" as the source
-   - The site will automatically deploy on every push to main
+2. **Push to GitHub and Enable Pages**
+   - Repository Settings → Pages → Source: "GitHub Actions"
+   - Automated deployment on every push to main branch
 
-3. **Update Base URL**
-   - Edit `vite.config.ts` and change the `base` property to match your repository name
-   - Example: `base: '/your-repo-name/'`
+### Custom Domain
 
-### Manual Deployment
+1. **Configure for Custom Domain**
 
-```bash
-npm run deploy
+   ```typescript
+   // vite.config.ts
+   export default defineConfig({
+     base: '/', // Root path for custom domains
+   })
+   ```
+
+2. **Add CNAME File**
+
+   ```
+   // public/CNAME
+   yourdomain.com
+   ```
+
+3. **Update DNS Settings** at your domain provider
+
+### Content Security Policy
+
+The portfolio includes CSP headers for Google Calendar integration. If you encounter issues:
+
+```html
+<!-- index.html -->
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://calendar.google.com;
+  frame-src 'self' https://calendar.google.com;
+  /* ... other CSP directives ... */
+"
+/>
 ```
 
 ## 📂 Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-│   └── Layout.tsx      # Main layout with navigation
-├── pages/              # Page components
-│   ├── About.tsx       # About page
-│   ├── Projects.tsx    # Projects showcase
-│   ├── Resume.tsx      # Resume/CV page
-│   └── Contact.tsx     # Contact page
-├── data/               # Configuration and data
-│   └── portfolioConfig.ts  # Main configuration file
-├── assets/             # Static assets
-├── App.tsx             # Main app component
-├── main.tsx           # Entry point
-└── index.css          # Global styles
+├── components/              # Reusable UI components
+│   ├── Sparkle.tsx         # Animated sparkle effects
+│   └── CalendarModal.tsx   # Google Calendar booking modal
+├── pages/                  # Main page components
+│   ├── Home.tsx           # Single-page application main component
+│   └── Home.module.css    # CSS Modules styling
+├── data/                  # Configuration and content
+│   └── portfolioConfig.ts # Central configuration file
+├── assets/               # Static assets and images
+├── App.tsx              # Root application component
+├── main.tsx            # Application entry point
+└── index.css          # Global styles and CSS custom properties
+
+public/
+├── profile_picture.jpeg    # Profile image
+├── project_placeholder.png # Fallback project image
+├── resume.pdf             # Resume/CV file
+├── robots.txt            # SEO robots file
+├── sitemap.xml          # SEO sitemap
+├── 404.html            # SPA routing fallback
+└── CNAME              # Custom domain configuration
 ```
 
-## 🎨 Customization Tips
+## 🎨 Key Components
 
-### Adding New Sections
+### Sparkle Animation
 
-1. Create a new component in `src/components/`
-2. Add it to the appropriate page
-3. Update navigation in `Layout.tsx` if needed
+```typescript
+<Sparkle
+  top={3}
+  right={-12}
+  size={10}
+  color={'#D4AF37'}
+  svg={<LucideSparkle size={16} fill={'#D4AF37'} />}
+/>
+```
 
-### Changing Colors
+### Calendar Modal
 
-Edit the Tailwind classes throughout the components or customize the theme in `tailwind.config.js`.
+```typescript
+<CalendarModal
+  isOpen={isCalendarOpen}
+  onClose={() => setIsCalendarOpen(false)}
+  calendarUrl={portfolioConfig.calendarUrl}
+/>
+```
 
-### Adding More Projects
+### Interactive Grid Background
 
-Update the `projects` array in `src/pages/Projects.tsx` with your project details.
+- Mouse-responsive engineering grid pattern
+- Opacity changes based on mouse movement
+- Automatic hiding when mouse leaves viewport
 
-### Custom Animations
+## 🔧 Development Features
 
-Framer Motion is already included. Add custom animations using the `motion` components.
+- **Hot Module Replacement**: Instant updates during development
+- **TypeScript**: Full type safety and IntelliSense
+- **CSS Modules**: Scoped styling with zero conflicts
+- **ESLint & Prettier**: Code quality and formatting
+- **VS Code Integration**: Optimized development experience
 
-## 📝 License
+## 🎯 Getting Started Checklist
 
-This project is open source and available under the [MIT License](LICENSE).
+0. If you're on a Mac, open a terminal and run the following command:
 
-## 🤝 Contributing
+```bash
+brew install nvm
+```
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/bryce-mcmath/mech-eng-portfolio/issues).
+Then use nvm to install and active the latest Node 22.
 
-## 📧 Support
+```bash
+nvm install lts/jod
+nvm use lts/jod
+```
 
-If you have any questions or need help customizing the portfolio, feel free to reach out or create an issue.
+1. **✅ Clone and Setup**
+
+   ```bash
+   git clone https://github.com/bryce-mcmath/mech-eng-portfolio.git
+   cd mech-eng-portfolio
+   npm install
+   npm run dev
+   ```
+
+2. **✅ Customize Content**
+   - Update `src/data/portfolioConfig.ts` with your information
+   - Replace profile picture in `public/` folder
+   - Add project thumbnails to `public/` folder
+   - Replace resume PDF in `public/` folder
+
+3. **✅ Setup Google Calendar** (Optional)
+   - Create Google Calendar appointment schedule
+   - Update `calendarUrl` in portfolio config
+
+4. **✅ Configure Deployment**
+   - For GitHub Pages: Set `base: '/repository-name/'` in `vite.config.ts`
+   - For custom domain: Set `base: '/'` and add `CNAME` file
+
+5. **✅ Deploy**
+   - Push to GitHub and enable Pages in repository settings
+   - Or configure custom domain DNS settings
+
+## 🚀 Performance & SEO
+
+- **Lighthouse Score**: Optimized for 90+ scores across all metrics
+- **Core Web Vitals**: Excellent loading and interactivity
+- **SEO**: Complete meta tags, structured data, and sitemap
+- **Accessibility**: Semantic HTML and proper ARIA labels
+- **Mobile-First**: Responsive design with touch-friendly interactions
 
 ---
 
-**Made with ❤️ for Mechanical Engineers**
+**Built for Mechanical Engineers by Engineers** 🔧
+
+This portfolio template is specifically designed for mechanical engineers who want to showcase their technical projects, CAD work, simulations, and professional experience in a modern, interactive format.

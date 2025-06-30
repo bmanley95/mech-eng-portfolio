@@ -72,15 +72,32 @@
     <meta name="msapplication-TileColor" content="#14b8a6" />
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="/profile_picture.png" as="image" />
+    <link
+      rel="preload"
+      href="/profile_picture.jpg"
+      as="image"
+      fetchpriority="high"
+    />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//calendar.google.com" />
+    <link rel="dns-prefetch" href="//apis.google.com" />
 
-    <!-- Google Fonts with performance optimizations -->
+    <!-- Google Fonts with performance optimizations - Non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -102,12 +119,12 @@
           "name": "University of Victoria"
         },
         "email": "brm2495@email.com",
-        "image": "/profile_picture.png"
+        "image": "/profile_picture.jpg"
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>

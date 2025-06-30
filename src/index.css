@@ -56,14 +56,6 @@ h6 {
   text-align: center;
 }
 
-/* Custom cursor for interactive elements */
-a:hover,
-button:hover,
-input:hover,
-textarea:hover {
-  cursor: url('/cursor.png'), auto;
-}
-
 :root {
   /* Color Palette */
   --color-background: #e9eceb;

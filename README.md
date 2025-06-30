@@ -17,7 +17,7 @@ A modern, responsive, two-column mechanical engineering portfolio website built 
 - **Left Column**: Fixed sidebar with profile, navigation, and social links
 - **Right Column**: Scrollable content with fade effects
 
-### Mobile (1024px and below)
+### Tablet and Mobile (1024px and below)
 
 - **Single Column**: Stacked layout with sticky section headers
 - **Hidden Navigation**: Simplified mobile experience
@@ -307,7 +307,3 @@ nvm use lts/jod
 - **Mobile-First**: Responsive design with touch-friendly interactions
 
 ---
-
-**Built for Mechanical Engineers by Engineers** 🔧
-
-This portfolio template is specifically designed for mechanical engineers who want to showcase their technical projects, CAD work, simulations, and professional experience in a modern, interactive format.

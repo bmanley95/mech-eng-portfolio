@@ -21,7 +21,7 @@ const navigation = [
 const sections = navigation.map((item) => item.href).reverse()
 
 function Home() {
-  const [activeSection, setActiveSection] = useState('about')
+  const [activeSection, setActiveSection] = useState<string>('about')
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 

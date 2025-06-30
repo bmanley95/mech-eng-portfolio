@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
         },
       },
     ],
-    base: '/mech-eng-portfolio/', // Changed back for GitHub Pages
+    base: '/', // Root path for custom domains
     build: {
       outDir: 'dist',
     },

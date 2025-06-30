@@ -62,7 +62,7 @@ export const portfolioConfig = {
       description:
         'Designed and built a prototype for a new agricultural product, with a sustainability focus',
       technologies: ['SolidWorks', 'ANSYS', 'Lean Manufacturing'],
-      link: 'http://wisertech.ca/',
+      link: 'https://wisertech.ca/',
     },
     {
       title: 'Mechanical Systems Engineer',

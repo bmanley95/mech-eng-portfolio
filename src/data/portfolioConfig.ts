@@ -31,7 +31,7 @@ export const portfolioConfig = {
 
   workExperience: [
     {
-      title: 'Chassis and Suspension Lead',
+      title: 'Aerodynamic | Chassis & Suspension Member',
       company: 'UVic Formula Hybrid Team',
       location: 'Victoria, BC',
       duration: 'Aug 2024 - Present',

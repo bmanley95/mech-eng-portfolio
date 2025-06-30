@@ -63,6 +63,7 @@ h6 {
   --color-text-secondary: #8c8f8e;
   --color-accent: #0d9488;
   --color-accent-light: #14b8a6;
+  --color-accent-border: rgba(13, 148, 136, 0.3);
 
   /* Typography */
   --font-heading: 'Crimson Pro', Georgia, 'Times New Roman', Times, serif;

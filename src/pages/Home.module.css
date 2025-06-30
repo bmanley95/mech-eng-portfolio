@@ -235,7 +235,7 @@ button:hover,
 }
 
 .section {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
   min-height: auto;
   display: flex;
   flex-direction: column;
@@ -257,72 +257,28 @@ button:hover,
   flex: 1;
 }
 
-.experienceItem {
+/* Base styles for interactive items */
+.experienceItem,
+.projectItem {
   padding: var(--space-lg) 0;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
+  display: flex;
   border-radius: var(--radius-lg);
   border: 1px solid transparent;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
-  display: block;
   text-decoration: none;
   color: inherit;
 }
 
-.externalLinkIcon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.experienceItem .externalLinkIcon,
-.projectItem .externalLinkIcon {
-  transition: all 0.3s ease;
-  color: var(--color-text-primary);
-}
-
-.experienceItem:hover {
-  background-color: var(--color-background);
-  border: 1px solid rgba(13, 148, 136, 0.3);
-  transform: translateX(calc(-1 * var(--space-lg)));
-  padding-left: var(--space-lg);
-  padding-right: var(--space-lg);
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.experienceItem:hover .experienceTitle {
-  color: var(--color-accent);
-}
-
-.experienceItem:hover .externalLinkIcon {
-  color: var(--color-accent);
-  transform: translate(2px, -2px);
-}
-
-.experienceSection:hover .experienceItem:not(:hover) {
-  opacity: 0.4;
-  transform: scale(0.98);
-}
-
-.experienceTitle {
-  color: var(--color-text-primary);
-  transition: color 0.3s ease;
+.experienceItem {
+  flex-direction: column;
 }
 
 .projectItem {
-  padding: var(--space-lg) 0;
-  margin-bottom: var(--space-2xl);
-  border-radius: var(--radius-lg);
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  display: flex;
   gap: var(--space-lg);
   align-items: flex-start;
-  text-decoration: none;
-  color: inherit;
 }
 
 .projectThumbnail {
@@ -347,27 +303,47 @@ button:hover,
   min-width: 0;
 }
 
-.projectItem:hover {
-  background-color: var(--color-background);
-  border: 1px solid rgba(13, 148, 136, 0.3);
-  transform: translateX(calc(-1 * var(--space-lg)));
-  padding-left: var(--space-lg);
-  padding-right: var(--space-lg);
-  margin-left: 0;
-  margin-right: 0;
+.externalLinkIcon {
+  width: 1rem;
+  height: 1rem;
 }
 
+.experienceItem .externalLinkIcon,
+.projectItem .externalLinkIcon {
+  transition: all 0.3s ease;
+  color: var(--color-text-primary);
+}
+
+.experienceItem:hover,
+.projectItem:hover {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-accent-border);
+}
+
+.experienceItem:hover .experienceTitle,
 .projectItem:hover .projectTitle {
   color: var(--color-accent);
 }
 
+.experienceItem:hover .externalLinkIcon,
 .projectItem:hover .externalLinkIcon {
   color: var(--color-accent);
   transform: translate(2px, -2px);
 }
 
+.experienceSection:hover .experienceItem:not(:hover) {
+  opacity: 0.4;
+  transform: scale(0.98);
+}
+
+.experienceTitle,
+.projectTitle {
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
 .projectItem:hover .projectThumbnail {
-  border-color: rgba(13, 148, 136, 0.3);
+  border-color: var(--color-accent-border);
 }
 
 .projectItem:hover .projectThumbnail img {
@@ -377,11 +353,6 @@ button:hover,
 .projectSection:hover .projectItem:not(:hover) {
   opacity: 0.4;
   transform: scale(0.98);
-}
-
-.projectTitle {
-  color: var(--color-text-primary);
-  transition: color 0.3s ease;
 }
 
 .spacedParagraph {
@@ -541,7 +512,6 @@ button:hover,
 
   .experienceItem:hover,
   .projectItem:hover {
-    transform: none;
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
     margin-left: 0;
@@ -612,7 +582,6 @@ button:hover,
 
   .experienceItem:hover,
   .projectItem:hover {
-    transform: none;
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
     margin-left: 0;
@@ -679,6 +648,31 @@ button:hover,
     padding: 0;
   }
 
+  .experienceItem,
+  .projectItem {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    margin-left: calc(-1 * var(--space-md));
+    margin-right: calc(-1 * var(--space-md));
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-left: none;
+    border-right: none;
+    transition: all 0.3s ease;
+    border-radius: 0;
+  }
+
+  .experienceItem:hover,
+  .projectItem:hover {
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-accent-border);
+    border-bottom: 1px solid var(--color-accent-border);
+    border-left: none;
+    border-right: none;
+  }
+
   .sectionTitle {
     display: block;
     position: sticky;
@@ -700,7 +694,6 @@ button:hover,
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   }
 
-  /* Hide navigation in single column mode */
   .groupB {
     display: none;
   }

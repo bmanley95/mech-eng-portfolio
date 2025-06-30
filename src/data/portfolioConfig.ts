@@ -11,7 +11,7 @@ export const portfolioConfig = {
   title: 'Mechanical Engineer, EIT',
   location: 'British Columbia, Canada',
   email: 'brm2495@email.com',
-  tagline: 'Thorough, resourceful. With grit and a dash of humor.',
+  tagline: 'Thorough, resourceful, gritty and with a dash of humor',
 
   // Google Calendar booking URL - replace with your own Google Calendar appointment schedule link
   calendarUrl:

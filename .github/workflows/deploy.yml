@@ -32,8 +32,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check GA4 Configuration
+        run: |
+          if [ -z "${{ vars.VITE_GA_MEASUREMENT_ID }}" ]; then
+            echo "⚠️  Warning: VITE_GA_MEASUREMENT_ID variable not set"
+            echo "Analytics will not be enabled in production"
+            echo "To enable analytics:"
+            echo "1. Go to Repository Settings → Secrets and variables → Actions"
+            echo "2. Go to the 'Variables' tab"
+            echo "3. Add a new repository variable named 'VITE_GA_MEASUREMENT_ID'"
+            echo "4. Set the value to your GA4 measurement ID (G-XXXXXXXXXX)"
+          else
+            echo "✅ GA4 measurement ID configured: ${{ vars.VITE_GA_MEASUREMENT_ID }}"
+          fi
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ vars.VITE_GA_MEASUREMENT_ID }}
+
       - name: Build
         run: npm run build
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ vars.VITE_GA_MEASUREMENT_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

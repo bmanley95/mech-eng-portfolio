@@ -18,9 +18,9 @@ export const portfolioConfig = {
     'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Qn6VCoz3I8WdYPB-Zu4HUw2bq9wQJUeXDGKx9dJY_z4W8NZp1w73j7OdtOZQai8bcyQhuNy4Q?gv=true',
   bio: {
     intro:
-      "I am a recent Mechanical Engineering graduate from the University of Victoria, with hands-on experience in composite design and manufacturing through the UVic Formula Hybrid team. My professional background includes roles at Ballard Power Systems and CanEV, where I conducted thermal and structural analyses, performed finite element analysis (FEA), and contributed to engineering design projects. I am passionate about solving complex problems and excel in fast-paced, multidisciplinary environments.",
+      'I am a recent Mechanical Engineering graduate from the University of Victoria, with hands-on experience in composite design and manufacturing through the UVic Formula Hybrid team. My professional background includes roles at Ballard Power Systems and CanEV, where I conducted thermal and structural analyses, performed finite element analysis (FEA), and contributed to engineering design projects. I am passionate about solving complex problems and excel in fast-paced, multidisciplinary environments.',
     experience:
-      "in automotive and marine engineering, simulation-driven design, and robotics. I have a solid foundation in CAD, finite element analysis, and project management, and I'm always open to new opportunities that allow me to explore, grow, and take on new challenges in my next role.",
+      "Experience in automotive and marine engineering, simulation-driven design, and robotics. I have a solid foundation in CAD, finite element analysis, and project management, and I'm always open to new opportunities that allow me to explore, grow, and take on new challenges in my next role.",
     // change below
     personal: '',
   },

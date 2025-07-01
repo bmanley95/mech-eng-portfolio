@@ -7,23 +7,27 @@ import {
   Sparkle as LucideSparkle,
 } from 'lucide-react'
 import styles from './Home.module.css'
-import { portfolioConfig } from '../data/portfolioConfig'
+import { getLocalizedContent } from '../data/localizedContent'
+import { useI18n } from '../hooks/useI18n'
 import Sparkle from '../components/Sparkle'
 import CalendarModal from '../components/CalendarModal'
+import LanguageSwitcher from '../components/LanguageSwitcher'
 import { trackPageView, trackEvent } from '../utils/analytics'
 
-const navigation = [
-  { name: 'About', href: 'about' },
-  { name: 'Projects', href: 'projects' },
-  { name: 'Experience', href: 'experience' },
-]
-
-const sections = navigation.map((item) => item.href).reverse()
-
 function Home() {
+  const { language, t } = useI18n()
+  const localizedContent = getLocalizedContent(language)
   const [activeSection, setActiveSection] = useState<string>('about')
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
+
+  const navigation = [
+    { name: t.navigation.about, href: 'about' },
+    { name: t.navigation.projects, href: 'projects' },
+    { name: t.navigation.experience, href: 'experience' },
+  ]
+
+  const sections = navigation.map((item) => item.href).reverse()
 
   const scrollToSection = (sectionId: string) => {
     // Track navigation clicks
@@ -40,6 +44,33 @@ function Home() {
       setActiveSection(sectionId)
     }
   }
+
+  useEffect(() => {
+    // Update document title and meta tags based on language
+    document.title = `${localizedContent.name} | Portfolio`
+
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', t.meta.description)
+    } else {
+      const newMetaDescription = document.createElement('meta')
+      newMetaDescription.name = 'description'
+      newMetaDescription.content = t.meta.description
+      document.head.appendChild(newMetaDescription)
+    }
+
+    // Update keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]')
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', t.meta.keywords)
+    } else {
+      const newMetaKeywords = document.createElement('meta')
+      newMetaKeywords.name = 'keywords'
+      newMetaKeywords.content = t.meta.keywords
+      document.head.appendChild(newMetaKeywords)
+    }
+  }, [language, t, localizedContent.name])
 
   useEffect(() => {
     // Track page view on initial load
@@ -182,7 +213,7 @@ function Home() {
       window.removeEventListener('wheel', handlePageScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [sections])
 
   // Jean Claude van Damme Easter egg for extremely small screens
   if (windowWidth < 200) {
@@ -215,19 +246,19 @@ function Home() {
               <div className={styles.profilePictureContainer}>
                 <img
                   src="profile_picture.jpg"
-                  alt={`${portfolioConfig.name} profile picture`}
+                  alt={`${localizedContent.name} ${t.accessibility.profilePictureAlt}`}
                   className={styles.profilePicture}
                 />
               </div>
               <div className={styles.headingContainer}>
-                <h1 className={styles.mainHeading}>{portfolioConfig.name}</h1>
-                <h2 className={styles.subtitle}>{portfolioConfig.title}</h2>
-                <p className={styles.tagline}>{portfolioConfig.tagline}</p>
+                <h1 className={styles.mainHeading}>{localizedContent.name}</h1>
+                <h2 className={styles.subtitle}>{localizedContent.title}</h2>
+                <p className={styles.tagline}>{localizedContent.tagline}</p>
               </div>
               <div className={styles.mobileProfilePictureContainer}>
                 <img
                   src="profile_picture.jpg"
-                  alt={`${portfolioConfig.name} profile picture`}
+                  alt={`${localizedContent.name} ${t.accessibility.profilePictureAlt}`}
                   className={styles.mobileProfilePicture}
                 />
               </div>
@@ -258,11 +289,11 @@ function Home() {
             <ul className={styles.socialList}>
               <li>
                 <a
-                  href={portfolioConfig.social.linkedin}
+                  href={localizedContent.social.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
-                  aria-label="LinkedIn (opens in a new tab)"
-                  title="LinkedIn"
+                  aria-label={t.accessibility.linkedinLabel}
+                  title={t.actions.linkedin}
                   className={styles.socialLink}
                   onClick={() =>
                     trackEvent('click_social', 'social', 'linkedin')
@@ -275,9 +306,9 @@ function Home() {
               </li>
               <li>
                 <a
-                  href={`mailto:${portfolioConfig.email}`}
-                  aria-label="Email"
-                  title="Email"
+                  href={`mailto:${localizedContent.email}`}
+                  aria-label={t.accessibility.emailLabel}
+                  title={t.actions.email}
                   className={styles.socialLink}
                   onClick={() => trackEvent('click_social', 'social', 'email')}
                 >
@@ -285,6 +316,9 @@ function Home() {
                     className={`${styles.socialIcon} ${styles.socialIconAligned}`}
                   />
                 </a>
+              </li>
+              <li>
+                <LanguageSwitcher />
               </li>
               <li className={styles.sparkleContainer}>
                 <Sparkle
@@ -298,14 +332,14 @@ function Home() {
                   href="Brandon_Manley_Resume.pdf"
                   target="_blank"
                   rel="noreferrer noopener"
-                  aria-label="Resume (opens in a new tab)"
-                  title="Resume"
+                  aria-label={t.accessibility.resumeLabel}
+                  title={t.actions.resume}
                   className={styles.socialLink}
                   onClick={() =>
                     trackEvent('download_resume', 'documents', 'pdf')
                   }
                 >
-                  Resume
+                  {t.actions.resume}
                 </a>
               </li>
             </ul>
@@ -316,23 +350,18 @@ function Home() {
         <main className={styles.rightColumn}>
           {/* GROUP D - About Section */}
           <section id="about" className={styles.section}>
-            <h2 className={styles.sectionTitle}>About</h2>
+            <h2 className={styles.sectionTitle}>{t.sections.about}</h2>
             <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
               <p
                 className={styles.spacedParagraph}
                 dangerouslySetInnerHTML={{
-                  __html: portfolioConfig.bio.intro,
+                  __html: localizedContent.bio.p1,
                 }}
               />
               <p
                 className={styles.spacedParagraph}
                 dangerouslySetInnerHTML={{
-                  __html: portfolioConfig.bio.experience,
-                }}
-              />
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: portfolioConfig.bio.personal,
+                  __html: localizedContent.bio.p2,
                 }}
               />
             </div>
@@ -343,9 +372,9 @@ function Home() {
             id="projects"
             className={`${styles.section} ${styles.projectSection}`}
           >
-            <h2 className={styles.sectionTitle}>Projects</h2>
+            <h2 className={styles.sectionTitle}>{t.sections.projects}</h2>
             <div className={styles.sectionContent}>
-              {portfolioConfig.projects.map((project, index) => (
+              {localizedContent.projects.map((project, index) => (
                 <a
                   key={index}
                   href={project.link || '#'}
@@ -365,7 +394,7 @@ function Home() {
                   <div className={styles.projectThumbnail}>
                     <img
                       src={project.thumbnailImg || 'project_placeholder.png'}
-                      alt={`${project.title} thumbnail`}
+                      alt={`${project.title} ${t.accessibility.projectThumbnailAlt}`}
                       loading="lazy"
                     />
                   </div>
@@ -399,9 +428,9 @@ function Home() {
             id="experience"
             className={`${styles.section} ${styles.experienceSection}`}
           >
-            <h2 className={styles.sectionTitle}>Experience</h2>
+            <h2 className={styles.sectionTitle}>{t.sections.experience}</h2>
             <div className={styles.sectionContent}>
-              {portfolioConfig.workExperience.map((job, index) => (
+              {localizedContent.workExperience.map((job, index) => (
                 <a
                   key={index}
                   href={job.link || '#'}
@@ -451,14 +480,14 @@ function Home() {
           </section>
 
           <section id="contact" className={styles.section}>
-            <h2 className={styles.sectionTitle}>Contact</h2>
+            <h2 className={styles.sectionTitle}>{t.sections.contact}</h2>
             <div className={styles.sectionContent}>
               <p className={styles.spacedParagraphLarge}>
-                {portfolioConfig.outro}
+                {localizedContent.outro}
               </p>
               <div className={styles.contactInfo}>
                 <MapPin className={styles.contactIcon} />
-                <span>{portfolioConfig.location}</span>
+                <span>{localizedContent.location}</span>
               </div>
               <button
                 onClick={() => {
@@ -467,7 +496,7 @@ function Home() {
                 }}
                 className={styles.contactButton}
               >
-                Schedule a meeting
+                {t.actions.scheduleAMeeting}
               </button>
             </div>
           </section>
@@ -476,7 +505,7 @@ function Home() {
       <CalendarModal
         isOpen={isCalendarOpen}
         onClose={() => setIsCalendarOpen(false)}
-        calendarUrl={portfolioConfig.calendarUrl}
+        calendarUrl={localizedContent.calendarUrl}
       />
     </div>
   )

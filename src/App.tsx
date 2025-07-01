@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import Home from './pages/Home'
+import { I18nProvider } from './contexts/I18nProvider'
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -62,7 +63,11 @@ const App: React.FC = () => {
     `)
   }, [])
 
-  return <Home />
+  return (
+    <I18nProvider>
+      <Home />
+    </I18nProvider>
+  )
 }
 
 export default App

@@ -10,7 +10,7 @@ export const portfolioConfig = {
   name: 'Brandon Manley',
   title: 'Mechanical Engineer, EIT',
   location: 'British Columbia, Canada',
-  email: 'brm2495@email.com',
+  email: 'brm2495@gmail.com',
   tagline: 'Thorough, resourceful, gritty and with a dash of humor',
 
   // Google Calendar booking URL - replace with your own Google Calendar appointment schedule link

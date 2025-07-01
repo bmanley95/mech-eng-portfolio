@@ -378,7 +378,7 @@ function Home() {
                         <ExternalLink className={styles.externalLinkIcon} />
                       )}
                     </h3>
-                    <p className={styles.spacedParagraphSmall}>
+                    <p className={styles.projectDescription}>
                       {project.description}
                     </p>
                     <div className={styles.techBadgesContainer}>
@@ -425,17 +425,19 @@ function Home() {
                   <h3
                     className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
                   >
-                    {job.title} at {job.company}
+                    {job.company}
                     {job.link && (
                       <ExternalLink className={styles.externalLinkIcon} />
                     )}
                   </h3>
                   <p className={styles.jobMeta}>
-                    {job.duration} • {job.location}
+                    {job.title} | {job.duration}
                   </p>
-                  <p className={styles.spacedParagraphSmall}>
-                    {job.description}
+                  <p className={styles.jobLocation}>
+                    <MapPin className={styles.contactIcon} />
+                    {job.location}
                   </p>
+                  <p className={styles.jobDescription}>{job.description}</p>
                   <div className={styles.techBadgesContainer}>
                     {job.technologies.map((tech, techIndex) => (
                       <span key={techIndex} className={styles.techBadge}>
@@ -451,11 +453,8 @@ function Home() {
           <section id="contact" className={styles.section}>
             <h2 className={styles.sectionTitle}>Contact</h2>
             <div className={styles.sectionContent}>
-              <p className={styles.spacedParagraph}>
-                {portfolioConfig.outro.p1}
-              </p>
               <p className={styles.spacedParagraphLarge}>
-                {portfolioConfig.outro.p2}
+                {portfolioConfig.outro}
               </p>
               <div className={styles.contactInfo}>
                 <MapPin className={styles.contactIcon} />

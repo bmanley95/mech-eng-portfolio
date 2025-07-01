@@ -279,16 +279,18 @@ button:hover,
 .projectItem {
   gap: var(--space-lg);
   align-items: flex-start;
+  padding: var(--space-xl) 0;
 }
 
 .projectThumbnail {
   flex-shrink: 0;
-  width: 150px;
-  height: 90px;
-  border-radius: var(--radius-md);
+  width: 180px;
+  height: 120px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .projectThumbnail img {
@@ -301,6 +303,9 @@ button:hover,
 .projectContent {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .externalLinkIcon {
@@ -344,14 +349,20 @@ button:hover,
 .projectTitle {
   color: var(--color-text-primary);
   transition: color 0.3s ease;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: var(--space-xs);
 }
 
 .projectItem:hover .projectThumbnail {
-  border-color: var(--color-accent-border);
+  border-color: rgba(20, 184, 166, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 }
 
 .projectItem:hover .projectThumbnail img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .projectSection:hover .projectItem:not(:hover) {
@@ -369,6 +380,12 @@ button:hover,
 
 .spacedParagraphSmall {
   margin-bottom: var(--space-sm);
+}
+
+.projectDescription {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 0.9rem;
 }
 
 /* Damme son */
@@ -413,31 +430,58 @@ button:hover,
   margin-bottom: var(--space-sm);
 }
 
+.jobLocation,
 .jobMeta {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-sm);
 }
 
+.jobLocation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.projectDescription,
+.jobDescription {
+  max-lines: 4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+}
+
 .techBadgesContainer {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
+  margin-top: var(--space-sm);
 }
 
 .techBadge {
-  background-color: rgba(20, 184, 166, 0.1);
+  background-color: rgba(20, 184, 166, 0.08);
   color: var(--color-accent);
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-full);
   font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  transition: all 0.2s ease;
+}
+
+.projectItem:hover .techBadge {
+  background-color: rgba(20, 184, 166, 0.15);
+  border-color: rgba(20, 184, 166, 0.3);
 }
 
 .contactInfo {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-md);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
 }
 
 .contactIcon {
@@ -525,8 +569,8 @@ button:hover,
   }
 
   .projectThumbnail {
-    width: 150px;
-    height: 90px;
+    width: 180px;
+    height: 120px;
   }
 }
 
@@ -595,8 +639,8 @@ button:hover,
   }
 
   .projectThumbnail {
-    width: 150px;
-    height: 90px;
+    width: 180px;
+    height: 120px;
   }
 }
 

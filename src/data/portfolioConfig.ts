@@ -9,9 +9,9 @@
 export const portfolioConfig = {
   name: 'Brandon Manley',
   title: 'Mechanical Engineer, EIT',
-  location: 'British Columbia, Canada',
+  location: 'Beautiful British Columbia 🇨🇦',
   email: 'brm2495@gmail.com',
-  tagline: 'Thorough, resourceful, gritty and with a dash of humor',
+  tagline: 'Thorough, resourceful, pragmatic.',
 
   // Google Calendar booking URL - replace with your own Google Calendar appointment schedule link
   calendarUrl:
@@ -31,7 +31,7 @@ export const portfolioConfig = {
 
   workExperience: [
     {
-      title: 'Aerodynamic | Chassis & Suspension Member',
+      title: 'Aerodynamic \u2022 Chassis & Suspension',
       company: 'UVic Formula Hybrid Team',
       location: 'Victoria, BC',
       duration: 'Aug 2024 - Present',
@@ -124,10 +124,7 @@ export const portfolioConfig = {
     },
   ],
 
-  outro: {
-    p1: `Ofcourse hearing from recruiters and engineers is great, but I also love to connect with students, recent grads, and anyone else with a shared interest for building cool stuff - let's watch eachother grow!`,
-    p2: `If you're interested in collaborating, adding a new member to your team, or just want to chat, feel free to reach out.`,
-  },
+  outro: `I am currently open to opportunities anywhere in North America. If you're interested in collaborating, adding a new member to your team, or just want to chat, please do reach out.`,
 }
 
 export default portfolioConfig

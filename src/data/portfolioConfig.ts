@@ -18,9 +18,9 @@ export const portfolioConfig = {
     'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Qn6VCoz3I8WdYPB-Zu4HUw2bq9wQJUeXDGKx9dJY_z4W8NZp1w73j7OdtOZQai8bcyQhuNy4Q?gv=true',
   bio: {
     intro:
-      'A recent UVic mechanical engineering graduate with quality co-op experience at organizations like <strong>Ballard Power Systems</strong> and <strong>Wiser Marine Technologies</strong>, I ramp up quickly in new environments and know which details need close attention.',
+      "I'm a recent Mechanical Engineering graduate from the University of Victoria. My experience  with hands-on experience in composite design and manufacturing through the UVic Formula Hybrid team, and  at Ballard Power Systems and CanEV. My roles includes, but not limited to, thermal and structural analysis, FEA and engineering design. I am passionate about tackling complex problems and thrive in multidisciplinary, fast-paced environments.",
     experience:
-      "I'm particularly interested in roles that involve <strong>composite manufacturing, automotive engineering, or simulation-driven development;</strong> postings involving any of those areas excite me greatly. I have a solid foundation in CAD design, thermal analysis, and project management, but I'm looking forward to a wider breadth of experience and deeper specialization in my next role.",
+      "in automotive and marine engineering, simulation-driven design, and robotics. I have a solid foundation in CAD, finite element analysis, and project management, and I'm always open to new opportunities that allow me to explore, grow, and take on new challenges in my next role.",
     // change below
     personal: '',
   },
@@ -36,7 +36,7 @@ export const portfolioConfig = {
       location: 'Victoria, BC',
       duration: 'Aug 2024 - Present',
       description:
-        'Redesigned and manufactured improved components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time in years',
+        'Redesigned and manufactured components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time since 2019.',
       technologies: [
         'SolidWorks',
         'ANSYS',
@@ -50,7 +50,7 @@ export const portfolioConfig = {
       company: 'University of Victoria',
       location: 'Victoria, BC',
       duration: 'Sep 2024 - Dec 2024',
-      description: 'Designed and prototyped...',
+      description: 'I developed a in matlab to perform thermal analysis Developed a matlab tool to determine the static and transient response for bus-bars in high voltage energy storage system.',
       technologies: ['MATLAB', 'CFD Analysis', 'Patent Applications'],
       link: 'https://www.uvic.ca/ecs/research-and-industry/ecs-research/index.php',
     },

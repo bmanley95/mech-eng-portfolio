@@ -78,38 +78,47 @@ export const portfolioConfig = {
 
   projects: [
     {
-      title: 'Composite Seat for Formula Hybrid',
+      title: 'Composite Seat',
       description:
-        'Designed, tested, and manufactured an ergonomic composite seat for the UVic Formula Hybrid car, reducing weight by 15% while improving driver comfort and safety.',
+        'The initial seat design lacked sufficient head clearance and caused discomfort during extended use. To address these issues and comply with competition regulations, I redesigned the seat emphasizing ergonomics, lateral stability, and manufacturability',
       technologies: [
         'SolidWorks',
-        'ANSYS',
-        'PLC Programming',
-        'Lean Manufacturing',
+        'Finite Element Analysis',
+        'ANSYS Workbench',
+        'Pre-ACP',
+        'CNC Machining',
       ],
-      // the thumbnails are the ones we wanted drawings for
-      // change below to `composite_seat_thumbnail.png` add a file with the below name to the public folder
-      thumbnailImg: 'project_placeholder.png',
+      thumbnailImg: 'composite_seat_thumbnail.png',
       // add a file with the below name to the public folder
       link: 'composite_seat.pdf',
     },
     {
-      title: 'Side Pods for Formula Hybrid',
+      title: 'Side Pods and Floor Guards',
       description:
-        'Designed, tested, and manufactured aerodynamic side pods for the UVic Formula Hybrid racecar, optimizing airflow and reducing drag.',
-      technologies: ['MATLAB', 'CFD Analysis', 'Thermodynamics', '3D Printing'],
-      // change below to `side_pods_thumbnail.png` add a file with the below name to the public folder
-      thumbnailImg: 'project_placeholder.png',
-      // add a file with the below name to the public folder
+        'Negative and positive layer geometry were chosen respectively so the outer surface of the pods remained smooth, minimizing aerodynamic drag and supporting accumulator shielding, while the floor guards generated vortices (downforce) due to venturi tunnel sealing with the floor',
+      technologies: [
+        'ANSYS Workbench',
+        'Pre-ACP',
+        'SolidWorks',
+        'Manufacturing',
+        'CNC Machining',
+      ],
+      thumbnailImg: 'side_pods_thumbnail.png',
       link: 'side_pods.pdf',
     },
     {
-      title: 'Rear Wing for Formula Hybrid',
+      title: 'Rear Wing Elements',
       description:
-        'Designed, tested, and manufactured a high-performance rear wing for the UVic Formula Hybrid racecar, improving downforce and stability at high speeds.',
-      technologies: ['MATLAB', 'CFD Analysis', 'Thermodynamics', '3D Printing'],
-      // change below to `rear_wing_thumbnail.png` add a file with the below name to the public folder
-      thumbnailImg: 'project_placeholder.png',
+        'Fabricated rear wing elements to increase downforce and vehicle stability at high speed while maintaining a low drag profile',
+      technologies: [
+        '3D Printing',
+        'ANSYS Workbench',
+        'Pre-ACP',
+        'SolidWorks',
+        'Manufacturing',
+        'CNC Machining',
+      ],
+      thumbnailImg: 'rear_wing_thumbnail.png',
       // add a file with the below name to the public folder
       link: 'rear_wing.pdf',
     },

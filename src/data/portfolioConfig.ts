@@ -15,7 +15,7 @@ export const portfolioConfig = {
 
   // Google Calendar booking URL - replace with your own Google Calendar appointment schedule link
   calendarUrl:
-    'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1OeO1TcU8PGMwG0MlmiGoA12eV5Wj6haP0n6SyEh9F2ikHYKSW5JqmiZY-3lN0RuBGNaCD6fy_?gv=true',
+    'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Qn6VCoz3I8WdYPB-Zu4HUw2bq9wQJUeXDGKx9dJY_z4W8NZp1w73j7OdtOZQai8bcyQhuNy4Q?gv=true',
   bio: {
     intro:
       'A recent UVic mechanical engineering graduate with quality co-op experience at organizations like <strong>Ballard Power Systems</strong> and <strong>Wiser Marine Technologies</strong>, I ramp up quickly in new environments and know which details need close attention.',

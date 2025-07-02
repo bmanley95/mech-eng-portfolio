@@ -216,7 +216,14 @@ function Home() {
   }, [sections])
 
   // Jean Claude van Damme Easter egg for extremely small screens
-  if (windowWidth < 200) {
+  // Use screen.width instead of window.innerWidth to avoid zoom issues on Safari
+  const isExtremelySmallScreen =
+    typeof window !== 'undefined' &&
+    window.screen &&
+    window.screen.width < 200 &&
+    windowWidth < 200
+
+  if (isExtremelySmallScreen) {
     return (
       <div className={styles.easterEggContainer}>
         <a

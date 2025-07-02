@@ -75,7 +75,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
   en: {
     name: 'Brandon Manley',
     title: 'Mechanical Engineer, EIT',
-    location: 'Beautiful British Columbia 🇨🇦',
+    location: 'Location: Victoria, British Columbia 🇨🇦',
     email: 'brm2495@gmail.com',
     tagline: 'Thoughtful, thorough, resourceful.',
     calendarUrl:
@@ -132,7 +132,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Burnaby, BC',
         duration: 'Sep 2021 - Apr 2022',
         description:
-          'Generated technical documentation, redline drawings, executed change orders, bench tested subsystems on the HD+ 100kW module, devised analytical solutions to identify pressure drop zones',
+          'Generated technical documentation, redline drawings, executed change orders, bench tested subsystems on the HD+ 100kW module, devised analytical solutions to identify pressure drop zones.',
         technologies: [
           'Creo',
           'SolidWorks',
@@ -156,7 +156,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
           'CNC Machining',
         ],
         thumbnailImg: 'composite_seat_thumbnail.png',
-        link: 'composite_seat.pdf',
+        link: 'Composite_Seat.pdf',
       },
       {
         title: 'Side Pods and Floor Guards',
@@ -170,7 +170,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
           'CNC Machining',
         ],
         thumbnailImg: 'side_pods_thumbnail.png',
-        link: 'side_pods.pdf',
+        link: 'Sidepods_Floor_Guards.pdf',
       },
       {
         title: 'Rear Wing Elements',

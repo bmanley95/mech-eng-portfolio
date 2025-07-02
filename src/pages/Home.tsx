@@ -243,309 +243,284 @@ function Home() {
   }
 
   return (
-    <>
-      {/* Under Construction Banner */}
-      <div className={styles.constructionBanner}>
-        <div className={styles.constructionContent}>
-          <div className={styles.constructionIcon}>🚧</div>
-          <strong className={styles.constructionText}>
-            {language === 'fr'
-              ? 'Site en construction'
-              : 'Site Under Construction'}
-          </strong>
-          <div className={styles.constructionIcon}>🚧</div>
-        </div>
-      </div>
-      {/* Main Content */}
-      <div className={styles.container}>
-        <div className={styles.layoutGrid}>
-          {/* Left Column */}
-          <header className={styles.leftColumn}>
-            <div className={styles.leftContent}>
-              {/* GROUP A */}
-              <div className={styles.groupA}>
-                <div className={styles.profilePictureContainer}>
-                  <img
-                    src="profile_picture.jpg"
-                    alt={`${localizedContent.name} ${t.accessibility.profilePictureAlt}`}
-                    className={styles.profilePicture}
-                  />
-                </div>
-                <div className={styles.headingContainer}>
-                  <h1 className={styles.mainHeading}>
-                    {localizedContent.name}
-                  </h1>
-                  <h2 className={styles.subtitle}>{localizedContent.title}</h2>
-                  <p className={styles.tagline}>{localizedContent.tagline}</p>
-                </div>
-                <div className={styles.mobileProfilePictureContainer}>
-                  <img
-                    src="profile_picture.jpg"
-                    alt={`${localizedContent.name} ${t.accessibility.profilePictureAlt}`}
-                    className={styles.mobileProfilePicture}
-                  />
-                </div>
+    <div className={styles.container}>
+      <div className={styles.layoutGrid}>
+        {/* Left Column */}
+        <header className={styles.leftColumn}>
+          <div className={styles.leftContent}>
+            {/* GROUP A */}
+            <div className={styles.groupA}>
+              <div className={styles.profilePictureContainer}>
+                <img
+                  src="profile_picture.jpg"
+                  alt={`${localizedContent.name} ${t.accessibility.profilePictureAlt}`}
+                  className={styles.profilePicture}
+                />
               </div>
-
-              {/* GROUP B - Navigation */}
-              <nav className={styles.groupB}>
-                <ul className={styles.navigation}>
-                  {navigation.map((item) => (
-                    <li key={item.href} className={styles.navItem}>
-                      <button
-                        onClick={() => scrollToSection(item.href)}
-                        className={`${styles.navLink} ${
-                          activeSection === item.href ? styles.active : ''
-                        }`}
-                      >
-                        <span className={styles.navIndicator}></span>
-                        <span className={styles.navText}>{item.name}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <div className={styles.headingContainer}>
+                <h1 className={styles.mainHeading}>{localizedContent.name}</h1>
+                <h2 className={styles.subtitle}>{localizedContent.title}</h2>
+                <p className={styles.tagline}>{localizedContent.tagline}</p>
+              </div>
+              <div className={styles.mobileProfilePictureContainer}>
+                <img
+                  src="profile_picture.jpg"
+                  alt={`${localizedContent.name} ${t.accessibility.profilePictureAlt}`}
+                  className={styles.mobileProfilePicture}
+                />
+              </div>
             </div>
 
-            {/* GROUP C - Social Links */}
-            <div className={styles.groupC}>
-              <ul className={styles.socialList}>
-                <li>
-                  <a
-                    href={localizedContent.social.linkedin}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={t.accessibility.linkedinLabel}
-                    title={t.actions.linkedin}
-                    className={styles.socialLink}
-                    onClick={() =>
-                      trackEvent('click_social', 'social', 'linkedin')
-                    }
-                  >
-                    <Linkedin
-                      className={`${styles.socialIcon} ${styles.socialIconAligned}`}
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`mailto:${localizedContent.email}`}
-                    aria-label={t.accessibility.emailLabel}
-                    title={t.actions.email}
-                    className={styles.socialLink}
-                    onClick={() =>
-                      trackEvent('click_social', 'social', 'email')
-                    }
-                  >
-                    <Mail
-                      className={`${styles.socialIcon} ${styles.socialIconAligned}`}
-                    />
-                  </a>
-                </li>
-                <li>
-                  <LanguageSwitcher />
-                </li>
-                <li className={styles.sparkleContainer}>
-                  <Sparkle
-                    top={3}
-                    right={language === 'fr' ? -38 : -12}
-                    size={10}
-                    color={'#D4AF37'}
-                    svg={<LucideSparkle size={16} fill={'#D4AF37'} />}
-                  />
-                  <a
-                    href="Brandon_Manley_Resume.pdf"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={t.accessibility.resumeLabel}
-                    title={t.actions.resume}
-                    className={styles.socialLink}
-                    onClick={() =>
-                      trackEvent('download_resume', 'documents', 'pdf')
-                    }
-                  >
-                    {t.actions.resume}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </header>
-
-          {/* Right Column */}
-          <main className={styles.rightColumn}>
-            {/* GROUP D - About Section */}
-            <section id="about" className={styles.section}>
-              <h2 className={styles.sectionTitle}>{t.sections.about}</h2>
-              <div
-                className={`${styles.sectionContent} ${styles.aboutContent}`}
-              >
-                <p
-                  className={styles.spacedParagraph}
-                  dangerouslySetInnerHTML={{
-                    __html: localizedContent.bio.p1,
-                  }}
-                />
-                <p
-                  className={styles.spacedParagraph}
-                  dangerouslySetInnerHTML={{
-                    __html: localizedContent.bio.p2,
-                  }}
-                />
-                <p
-                  className={styles.spacedParagraph}
-                  dangerouslySetInnerHTML={{
-                    __html: localizedContent.bio.p3,
-                  }}
-                />
-              </div>
-            </section>
-
-            {/* GROUP F - Projects Section */}
-            <section
-              id="projects"
-              className={`${styles.section} ${styles.projectSection}`}
-            >
-              <h2 className={styles.sectionTitle}>{t.sections.projects}</h2>
-              <div className={styles.sectionContent}>
-                {localizedContent.projects.map((project, index) => (
-                  <a
-                    key={index}
-                    href={project.link || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.projectItem}
-                    onClick={
-                      project.link
-                        ? () =>
-                            trackEvent(
-                              'click_project',
-                              'projects',
-                              project.title
-                            )
-                        : (e) => {
-                            e.preventDefault()
-                            // No link available for this project
-                          }
-                    }
-                  >
-                    <div className={styles.projectThumbnail}>
-                      <img
-                        src={project.thumbnailImg || 'project_placeholder.png'}
-                        alt={`${project.title} ${t.accessibility.projectThumbnailAlt}`}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className={styles.projectContent}>
-                      <h3
-                        className={`${styles.projectTitle} ${styles.sectionTitleStyle}`}
-                      >
-                        {project.title}
-                        {project.link && (
-                          <ExternalLink className={styles.externalLinkIcon} />
-                        )}
-                      </h3>
-                      <p className={styles.projectDescription}>
-                        {project.description}
-                      </p>
-                      <div className={styles.techBadgesContainer}>
-                        {project.technologies.map((tech, techIndex) => (
-                          <span key={techIndex} className={styles.techBadge}>
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </section>
-
-            {/* GROUP E - Experience Section */}
-            <section
-              id="experience"
-              className={`${styles.section} ${styles.experienceSection}`}
-            >
-              <h2 className={styles.sectionTitle}>{t.sections.experience}</h2>
-              <div className={styles.sectionContent}>
-                {localizedContent.workExperience.map((job, index) => (
-                  <a
-                    key={index}
-                    href={job.link || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.experienceItem}
-                    onClick={
-                      job.link
-                        ? () =>
-                            trackEvent(
-                              'click_experience',
-                              'experience',
-                              job.company
-                            )
-                        : (e) => {
-                            e.preventDefault()
-                            // No link available for this experience
-                          }
-                    }
-                  >
-                    <h3
-                      className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
+            {/* GROUP B - Navigation */}
+            <nav className={styles.groupB}>
+              <ul className={styles.navigation}>
+                {navigation.map((item) => (
+                  <li key={item.href} className={styles.navItem}>
+                    <button
+                      onClick={() => scrollToSection(item.href)}
+                      className={`${styles.navLink} ${
+                        activeSection === item.href ? styles.active : ''
+                      }`}
                     >
-                      {job.company}
-                      {job.link && (
+                      <span className={styles.navIndicator}></span>
+                      <span className={styles.navText}>{item.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* GROUP C - Social Links */}
+          <div className={styles.groupC}>
+            <ul className={styles.socialList}>
+              <li>
+                <a
+                  href={localizedContent.social.linkedin}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={t.accessibility.linkedinLabel}
+                  title={t.actions.linkedin}
+                  className={styles.socialLink}
+                  onClick={() =>
+                    trackEvent('click_social', 'social', 'linkedin')
+                  }
+                >
+                  <Linkedin
+                    className={`${styles.socialIcon} ${styles.socialIconAligned}`}
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${localizedContent.email}`}
+                  aria-label={t.accessibility.emailLabel}
+                  title={t.actions.email}
+                  className={styles.socialLink}
+                  onClick={() => trackEvent('click_social', 'social', 'email')}
+                >
+                  <Mail
+                    className={`${styles.socialIcon} ${styles.socialIconAligned}`}
+                  />
+                </a>
+              </li>
+              <li>
+                <LanguageSwitcher />
+              </li>
+              <li className={styles.sparkleContainer}>
+                <Sparkle
+                  top={3}
+                  right={language === 'fr' ? -38 : -12}
+                  size={10}
+                  color={'#D4AF37'}
+                  svg={<LucideSparkle size={16} fill={'#D4AF37'} />}
+                />
+                <a
+                  href="Brandon_Manley_Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={t.accessibility.resumeLabel}
+                  title={t.actions.resume}
+                  className={styles.socialLink}
+                  onClick={() =>
+                    trackEvent('download_resume', 'documents', 'pdf')
+                  }
+                >
+                  {t.actions.resume}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+
+        {/* Right Column */}
+        <main className={styles.rightColumn}>
+          {/* GROUP D - About Section */}
+          <section id="about" className={styles.section}>
+            <h2 className={styles.sectionTitle}>{t.sections.about}</h2>
+            <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
+              <p
+                className={styles.spacedParagraph}
+                dangerouslySetInnerHTML={{
+                  __html: localizedContent.bio.p1,
+                }}
+              />
+              <p
+                className={styles.spacedParagraph}
+                dangerouslySetInnerHTML={{
+                  __html: localizedContent.bio.p2,
+                }}
+              />
+              <p
+                className={styles.spacedParagraph}
+                dangerouslySetInnerHTML={{
+                  __html: localizedContent.bio.p3,
+                }}
+              />
+            </div>
+          </section>
+
+          {/* GROUP F - Projects Section */}
+          <section
+            id="projects"
+            className={`${styles.section} ${styles.projectSection}`}
+          >
+            <h2 className={styles.sectionTitle}>{t.sections.projects}</h2>
+            <div className={styles.sectionContent}>
+              {localizedContent.projects.map((project, index) => (
+                <a
+                  key={index}
+                  href={project.link || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectItem}
+                  onClick={
+                    project.link
+                      ? () =>
+                          trackEvent('click_project', 'projects', project.title)
+                      : (e) => {
+                          e.preventDefault()
+                          // No link available for this project
+                        }
+                  }
+                >
+                  <div className={styles.projectThumbnail}>
+                    <img
+                      src={project.thumbnailImg || 'project_placeholder.png'}
+                      alt={`${project.title} ${t.accessibility.projectThumbnailAlt}`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className={styles.projectContent}>
+                    <h3
+                      className={`${styles.projectTitle} ${styles.sectionTitleStyle}`}
+                    >
+                      {project.title}
+                      {project.link && (
                         <ExternalLink className={styles.externalLinkIcon} />
                       )}
                     </h3>
-                    <p className={styles.jobMeta}>
-                      {job.title} | {job.duration}
+                    <p className={styles.projectDescription}>
+                      {project.description}
                     </p>
-                    <p className={styles.jobLocation}>
-                      <MapPin className={styles.contactIcon} />
-                      {job.location}
-                    </p>
-                    <p className={styles.jobDescription}>{job.description}</p>
                     <div className={styles.techBadgesContainer}>
-                      {job.technologies.map((tech, techIndex) => (
+                      {project.technologies.map((tech, techIndex) => (
                         <span key={techIndex} className={styles.techBadge}>
                           {tech}
                         </span>
                       ))}
                     </div>
-                  </a>
-                ))}
-              </div>
-            </section>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
 
-            <section id="contact" className={styles.section}>
-              <h2 className={styles.sectionTitle}>{t.sections.contact}</h2>
-              <div className={styles.sectionContent}>
-                <p className={styles.spacedParagraphLarge}>
-                  {localizedContent.outro}
-                </p>
-                <div className={styles.contactInfo}>
-                  <MapPin className={styles.contactIcon} />
-                  <span>{localizedContent.location}</span>
-                </div>
-                <button
-                  onClick={() => {
-                    trackEvent('open_calendar', 'contact', 'schedule_meeting')
-                    setIsCalendarOpen(true)
-                  }}
-                  className={styles.contactButton}
+          {/* GROUP E - Experience Section */}
+          <section
+            id="experience"
+            className={`${styles.section} ${styles.experienceSection}`}
+          >
+            <h2 className={styles.sectionTitle}>{t.sections.experience}</h2>
+            <div className={styles.sectionContent}>
+              {localizedContent.workExperience.map((job, index) => (
+                <a
+                  key={index}
+                  href={job.link || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.experienceItem}
+                  onClick={
+                    job.link
+                      ? () =>
+                          trackEvent(
+                            'click_experience',
+                            'experience',
+                            job.company
+                          )
+                      : (e) => {
+                          e.preventDefault()
+                          // No link available for this experience
+                        }
+                  }
                 >
-                  {t.actions.scheduleAMeeting}
-                </button>
+                  <h3
+                    className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
+                  >
+                    {job.company}
+                    {job.link && (
+                      <ExternalLink className={styles.externalLinkIcon} />
+                    )}
+                  </h3>
+                  <p className={styles.jobMeta}>
+                    {job.title} | {job.duration}
+                  </p>
+                  <p className={styles.jobLocation}>
+                    <MapPin className={styles.contactIcon} />
+                    {job.location}
+                  </p>
+                  <p className={styles.jobDescription}>{job.description}</p>
+                  <div className={styles.techBadgesContainer}>
+                    {job.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className={styles.techBadge}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section id="contact" className={styles.section}>
+            <h2 className={styles.sectionTitle}>{t.sections.contact}</h2>
+            <div className={styles.sectionContent}>
+              <p className={styles.spacedParagraphLarge}>
+                {localizedContent.outro}
+              </p>
+              <div className={styles.contactInfo}>
+                <MapPin className={styles.contactIcon} />
+                <span>{localizedContent.location}</span>
               </div>
-            </section>
-          </main>
-        </div>
-        <CalendarModal
-          isOpen={isCalendarOpen}
-          onClose={() => setIsCalendarOpen(false)}
-          calendarUrl={localizedContent.calendarUrl}
-        />
+              <button
+                onClick={() => {
+                  trackEvent('open_calendar', 'contact', 'schedule_meeting')
+                  setIsCalendarOpen(true)
+                }}
+                className={styles.contactButton}
+              >
+                {t.actions.scheduleAMeeting}
+              </button>
+            </div>
+          </section>
+        </main>
       </div>
-    </>
+      <CalendarModal
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
+        calendarUrl={localizedContent.calendarUrl}
+      />
+    </div>
   )
 }
 

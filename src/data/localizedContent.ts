@@ -75,9 +75,9 @@ export const localizedContent: Record<'en', LocalizedContent> &
   en: {
     name: 'Brandon Manley',
     title: 'Mechanical Engineer, EIT',
-    location: 'Location: Victoria, British Columbia 🇨🇦',
+    location: 'Victoria, British Columbia 🇨🇦',
     email: 'brm2495@gmail.com',
-    tagline: 'Thoughtful, thorough, resourceful.',
+    tagline: 'Resourceful, methodical, meticulous.',
     calendarUrl:
       'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Qn6VCoz3I8WdYPB-Zu4HUw2bq9wQJUeXDGKx9dJY_z4W8NZp1w73j7OdtOZQai8bcyQhuNy4Q?gv=true',
     social: {
@@ -190,14 +190,14 @@ export const localizedContent: Record<'en', LocalizedContent> &
     ],
   },
   fr: {
-    tagline: 'Réfléchi, minutieux, débrouillard.',
+    tagline: 'Débrouillard, méthodique, minutieux.',
     bio: {
       p1: "Diplômé récent en génie mécanique de l'Université de Victoria, avec une expertise en conception et fabrication de composites. Mon expérience professionnelle inclut des rôles chez <strong>Ballard Power Systems</strong> et <strong>CanEV</strong>, où j'ai mené des analyses thermiques, structurelles et par éléments finis.",
-      p2: "Mon expérience s'étend à une gamme de sujets—de la conception basée sur la simulation de composants automobiles, aux dessins de révision pour le module FCmove® HD+ 100kW, et la robotique autonome au Western Engineering Competition (WEC). Le fil conducteur a été mon plaisir à démêler des problèmes complexes et à simplifier leurs solutions en étapes claires et réalisables.",
+      p2: "Mon expérience s'étend de la conception basée sur la simulation de composants automobiles, aux dessins de révision pour le <strong>module FCmove® HD+ 100kW</strong>, jusqu'à la robotique autonome au <strong>Western Engineering Competition (WEC)</strong>. Le thème constant dans tout cela a été ma capacité à résoudre des problèmes complexes avec des bases solides.",
       p3: 'Veuillez découvrir une sélection de projets et expériences ci-dessous.',
     },
     outro:
-      "Je suis actuellement ouvert aux opportunités partout en Amérique du Nord. Si vous êtes intéressé à collaborer, à ajouter un nouveau membre à votre équipe, ou simplement à discuter, n'hésitez pas à me contacter!",
+      "Je suis ouvert aux opportunités partout en Amérique du Nord, particulièrement dans les secteurs automobile ou maritime. Si vous êtes intéressé à collaborer, à ajouter un nouveau membre à votre équipe, ou simplement à discuter, n'hésitez pas à me contacter.",
     workExperience: [
       {
         title: 'Aérodynamique • Châssis et Suspension',
@@ -205,13 +205,14 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, C.-B.',
         duration: 'Août 2024 - Présent',
         description:
-          "Reconception et fabrication de composants pour la voiture UVic Formula Hybrid, aidant l'équipe à se qualifier pour la compétition pour la première fois depuis 2019.",
+          "Reconception et fabrication de composants pour la voiture UVic Formula Hybrid, aidant l'équipe à passer toutes les inspections pour la compétition 2025, pour la première fois depuis 2019.",
         technologies: [
           'SolidWorks',
           'ANSYS',
           'Fabrication lean',
           'Gestion de projet',
         ],
+        link: 'https://uvicformulahybrid.wordpress.com/',
       },
       {
         title: 'Ingénieur Conception R&D',
@@ -219,8 +220,9 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, C.-B.',
         duration: 'Sep 2024 - Déc 2024',
         description:
-          "Intégration de projets, optimisation de la section transversale des barres omnibus haute tension, développement de rendus 3D haute précision, et décommissionnement d'un véhicule électrique partenaire de GM",
+          "Intégration de projets, optimisation de la section transversale des barres omnibus haute tension, développement de rendus 3D de haute précision, et décommissionnement d'un véhicule électrique partenaire de GM.",
         technologies: ['MATLAB', 'Analyse CFD', 'Analyse FEA'],
+        link: 'https://www.uvic.ca/ecs/research-and-industry/ecs-research/index.php',
       },
       {
         title: 'Ingénieur Agricole',
@@ -228,8 +230,9 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, C.-B.',
         duration: 'Mai 2023 - Août 2023',
         description:
-          "Développement d'un quai de recherche océanique de 20 pieds. Diagnostic, dépannage et maintenance du FarmBot (robot d'irrigation OC), rédaction de documentation technique pour une équipe multidisciplinaire",
+          "Développement d'un quai de recherche océanique de 20 pieds. Diagnostic, dépannage et maintenance du FarmBot (robot d'irrigation OC), rédaction de documentation technique pour une équipe multidisciplinaire.",
         technologies: ['SolidWorks', 'FarmBot', 'Documentation technique'],
+        link: 'https://wisertech.ca/',
       },
       {
         title: 'Ingénieur Systèmes Mécaniques',
@@ -237,15 +240,22 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Burnaby, C.-B.',
         duration: 'Sep 2021 - Avr 2022',
         description:
-          "Génération de documentation technique, dessins de révision, exécution d'ordres de modification, tests en laboratoire des sous-systèmes du module HD+ 100kW, conception de solutions analytiques pour identifier les zones de chute de pression",
-        technologies: ['Creo', 'SolidWorks', 'Agile', 'Contrôle qualité'],
+          "Génération de documentation technique, dessins de révision, exécution d'ordres de modification, tests en laboratoire des sous-systèmes du module HD+ 100kW, conception de solutions analytiques pour identifier les zones de chute de pression.",
+        technologies: [
+          'Creo',
+          'SolidWorks',
+          'Agile',
+          'Contrôle qualité',
+          'Documentation technique',
+        ],
+        link: 'https://www.ballard.com/',
       },
     ],
     projects: [
       {
         title: 'Siège en Composite',
         description:
-          "La conception initiale du siège manquait de dégagement suffisant pour la tête et causait de l'inconfort lors d'une utilisation prolongée. Pour résoudre ces problèmes et se conformer aux réglementations de compétition, j'ai reconçu le siège en mettant l'accent sur l'ergonomie, la stabilité latérale et la fabricabilité",
+          "La conception initiale du siège manquait de dégagement suffisant pour la tête et causait de l'inconfort lors d'une utilisation prolongée. Pour résoudre ces problèmes et se conformer aux réglementations de compétition, j'ai reconçu le siège en mettant l'accent sur l'ergonomie, la stabilité latérale et la fabricabilité.",
         technologies: [
           'SolidWorks',
           'Analyse par éléments finis',
@@ -253,11 +263,13 @@ export const localizedContent: Record<'en', LocalizedContent> &
           'Pre-ACP',
           'Usinage CNC',
         ],
+        thumbnailImg: 'composite_seat_thumbnail.png',
+        link: 'Composite_Seat.pdf',
       },
       {
         title: 'Pontons et Protections de Plancher',
         description:
-          "Une géométrie de couches négative et positive a été choisie respectivement pour que la surface extérieure des pontons reste lisse, minimisant la traînée aérodynamique et supportant le blindage de l'accumulateur, tandis que les protections de plancher génèrent des vortex (appui) grâce à l'étanchéité du tunnel venturi avec le plancher",
+          "Une géométrie de couches négative et positive a été choisie respectivement pour que la surface extérieure des pontons reste lisse, minimisant la traînée aérodynamique et supportant le blindage de l'accumulateur, tandis que les protections de plancher génèrent des vortex (appui) grâce à l'étanchéité du tunnel venturi avec le plancher.",
         technologies: [
           'ANSYS Workbench',
           'Pre-ACP',
@@ -265,11 +277,13 @@ export const localizedContent: Record<'en', LocalizedContent> &
           'Fabrication',
           'Usinage CNC',
         ],
+        thumbnailImg: 'side_pods_thumbnail.png',
+        link: 'Sidepods_Floor_Guards.pdf',
       },
       {
         title: "Éléments d'Aileron Arrière",
         description:
-          "Fabrication d'éléments d'aileron arrière pour augmenter l'appui et la stabilité du véhicule à haute vitesse tout en maintenant un profil de faible traînée",
+          "Utilisation de méthodes d'infusion de résine pour fabriquer des éléments d'aileron arrière multi-éléments afin d'améliorer l'appui et la stabilité à haute vitesse.",
         technologies: [
           'Impression 3D',
           'ANSYS Workbench',
@@ -278,6 +292,8 @@ export const localizedContent: Record<'en', LocalizedContent> &
           'Fabrication',
           'Usinage CNC',
         ],
+        thumbnailImg: 'rear_wing_thumbnail.png',
+        link: 'Rear_Wing.pdf',
       },
     ],
   },

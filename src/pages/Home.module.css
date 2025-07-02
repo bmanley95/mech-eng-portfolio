@@ -5,7 +5,6 @@
   padding: var(--space-3xl) var(--space-xl);
   overflow: hidden;
   position: relative;
-  margin-top: 60px;
 }
 
 a:hover,
@@ -85,18 +84,6 @@ button:hover,
   .headingContainer {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .constructionBanner {
-    padding: var(--space-xs) var(--space-sm);
-  }
-
-  .constructionContent {
-    gap: var(--space-xs);
-  }
-
-  .constructionText strong {
-    font-size: 0.85rem;
   }
 }
 
@@ -309,8 +296,9 @@ button:hover,
 .projectThumbnail img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
+  background-color: white;
 }
 
 .projectContent {
@@ -516,61 +504,6 @@ button:hover,
   font-family: inherit;
 }
 
-.constructionBanner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(90deg, #d97706, #f59e0b, #d97706);
-  color: white;
-  z-index: 1000;
-  padding: var(--space-sm) var(--space-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.constructionContent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  gap: var(--space-sm);
-}
-
-.constructionIcon {
-  font-size: 1.25rem;
-  animation: pulse 3s ease-in-out infinite;
-}
-
-.constructionText {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  text-align: center;
-}
-
-.constructionText strong {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-}
-
-.constructionText span {
-  font-size: 0.8rem;
-  opacity: 0.9;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
 /* Desktop */
 @media (min-width: 1281px) {
   .layoutGrid {
@@ -583,10 +516,10 @@ button:hover,
 
   .leftColumn {
     position: fixed;
-    top: calc(var(--space-3xl) + 60px);
+    top: var(--space-3xl);
     left: calc(50vw - 640px + var(--space-xl));
     width: calc(640px - var(--space-xl) - var(--space-md) / 2);
-    height: calc(100vh - 2 * var(--space-3xl) - 60px);
+    height: calc(100vh - 2 * var(--space-3xl));
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -651,10 +584,10 @@ button:hover,
 
   .leftColumn {
     position: fixed;
-    top: calc(var(--space-3xl) + 60px);
+    top: var(--space-3xl);
     left: var(--space-xl);
     width: calc((100vw - 2 * var(--space-xl) - var(--space-md)) / 2);
-    height: calc(100vh - 2 * var(--space-3xl) - 60px);
+    height: calc(100vh - 2 * var(--space-3xl));
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -809,21 +742,6 @@ button:hover,
   .groupB {
     display: none;
   }
-
-  .projectThumbnail {
-    width: 100px;
-    height: 60px;
-  }
-
-  .projectItem {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .projectItem .projectThumbnail {
-    width: 100%;
-    height: 160px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -849,5 +767,15 @@ button:hover,
 
   .profilePicture {
     height: 2.75rem;
+  }
+
+  .projectItem {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .projectItem .projectThumbnail {
+    width: 100%;
+    height: 160px;
   }
 }

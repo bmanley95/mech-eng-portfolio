@@ -5,6 +5,7 @@
   padding: var(--space-3xl) var(--space-xl);
   overflow: hidden;
   position: relative;
+  margin-top: 60px;
 }
 
 a:hover,
@@ -84,6 +85,18 @@ button:hover,
   .headingContainer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .constructionBanner {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .constructionContent {
+    gap: var(--space-xs);
+  }
+
+  .constructionText strong {
+    font-size: 0.85rem;
   }
 }
 
@@ -443,8 +456,7 @@ button:hover,
   gap: var(--space-xs);
 }
 
-.projectDescription,
-.jobDescription {
+.projectDescription {
   max-lines: 4;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -502,6 +514,61 @@ button:hover,
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
+}
+
+.constructionBanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #d97706, #f59e0b, #d97706);
+  color: white;
+  z-index: 1000;
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.constructionContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: var(--space-sm);
+}
+
+.constructionIcon {
+  font-size: 1.25rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.constructionText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  text-align: center;
+}
+
+.constructionText strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.constructionText span {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
 }
 
 /* Desktop */

@@ -14,6 +14,7 @@ interface LocalizedContent {
   bio: {
     p1: string
     p2: string
+    p3: string
   }
   outro: string
   workExperience: Array<{
@@ -48,6 +49,7 @@ interface PartialLocalizedContent {
   bio?: {
     p1?: string
     p2?: string
+    p3?: string
   }
   outro?: string
   workExperience?: Array<{
@@ -82,11 +84,12 @@ export const localizedContent: Record<'en', LocalizedContent> &
       linkedin: 'https://www.linkedin.com/in/brandon-manley95/',
     },
     bio: {
-      p1: 'Recent Mechanical Engineering graduate from the University of Victoria, with a background in composite design and manufacturing. Professional history includes roles at <strong>Ballard Power Systems and CanEV</strong>, where I conducted thermal, structural, and finite element analyses.',
-      p2: 'My collective experience has touched on a variety of subjects - from simulation-driven design in automotive and marine engineering, to CAD and FEA in robotics. The common thread I found was my enjoyment in figuring out complex problems and then simplifying the solutions into clear, actionable steps.',
+      p1: 'Recent Mechanical Engineering graduate from the University of Victoria, with a background in composite design and manufacturing. Professional history includes roles at <strong>Ballard Power Systems</strong> and <strong>CanEV</strong>, where I conducted thermal, structural, and finite element analyses.',
+      p2: 'My experience ranges from simulation-driven design of automotive components, to redline drawings for the <strong>FCmove® HD+ 100kW module</strong>, to autonomous robotics at the <strong>Western Engineering Competition (WEC)</strong>. The consistent theme throughout has been my ability to solve complex problems with strong fundamentals.',
+      p3: 'Please enjoy a selection of projects and experience below.',
     },
     outro:
-      "I am currently open to opportunities anywhere in North America. If you're interested in collaborating, adding a new member to your team, or just want to chat, please do reach out.",
+      "I am open to opportunities anywhere in North America, especially those in the automotive or marine sector. If you're interested in collaborating, adding a new member to your team, or just want to chat, please do reach out.",
     workExperience: [
       {
         title: 'Aerodynamic • Chassis & Suspension',
@@ -94,7 +97,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, BC',
         duration: 'Aug 2024 - Present',
         description:
-          'Redesigned and manufactured components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time since 2019.',
+          'Redesigned and manufactured components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time since 2019',
         technologies: [
           'SolidWorks',
           'ANSYS',
@@ -105,12 +108,12 @@ export const localizedContent: Record<'en', LocalizedContent> &
       },
       {
         title: 'R&D Design Engineer',
-        company: 'University of Victoria',
+        company: 'University of Victoria | CanEV',
         location: 'Victoria, BC',
         duration: 'Sep 2024 - Dec 2024',
         description:
-          'I developed a in matlab to perform thermal analysis Developed a matlab tool to determine the static and transient response for bus-bars in high voltage energy storage system.',
-        technologies: ['MATLAB', 'CFD Analysis', 'Patent Applications'],
+          'Project integration, high voltage bus-bar cross-section optimization, developing high accurate 3D scan renders, and decommissioning of a GM partnered electric vehicle',
+        technologies: ['MATLAB', 'CFD Analysis', 'FEA Analysis'],
         link: 'https://www.uvic.ca/ecs/research-and-industry/ecs-research/index.php',
       },
       {
@@ -119,8 +122,8 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, BC',
         duration: 'May 2023 - Aug 2023',
         description:
-          'Designed and built a prototype for a new agricultural product, with a sustainability focus',
-        technologies: ['SolidWorks', 'ANSYS', 'Lean Manufacturing'],
+          'Development of a 20ft ocean research dock. Diagnosis, troubleshooting and maintenance of FarmBot (OC irrigation robot), technical documentation write up for a multidisciplinary team',
+        technologies: ['SolidWorks', 'FarmBot', 'Technical Documentation'],
         link: 'https://wisertech.ca/',
       },
       {
@@ -129,8 +132,14 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Burnaby, BC',
         duration: 'Sep 2021 - Apr 2022',
         description:
-          'Supported senior engineers in product design and development',
-        technologies: ['AutoCAD', 'Quality Control', 'Technical Documentation'],
+          'Generated technical documentation, redline drawings, executed change orders, bench tested subsystems on the HD+ 100kW module, devised analytical solutions to identify pressure drop zones',
+        technologies: [
+          'Creo',
+          'SolidWorks',
+          'Agile',
+          'Quality Control',
+          'Technical Documentation',
+        ],
         link: 'https://www.ballard.com/',
       },
     ],
@@ -183,8 +192,9 @@ export const localizedContent: Record<'en', LocalizedContent> &
   fr: {
     tagline: 'Réfléchi, minutieux, débrouillard.',
     bio: {
-      p1: "Diplômé récent en génie mécanique de l'Université de Victoria, avec une expertise en conception et fabrication de composites. Mon expérience professionnelle inclut des rôles chez <strong>Ballard Power Systems et CanEV</strong>, où j'ai mené des analyses thermiques, structurelles et par éléments finis.",
-      p2: "Mon expérience collective a touché à une variété de sujets - de la conception basée sur la simulation en ingénierie automobile et marine, à la CAO et l'analyse FEA en robotique. Le fil conducteur que j'ai trouvé était mon plaisir à résoudre des problèmes complexes et à simplifier les solutions en étapes claires et réalisables.",
+      p1: "Diplômé récent en génie mécanique de l'Université de Victoria, avec une expertise en conception et fabrication de composites. Mon expérience professionnelle inclut des rôles chez <strong>Ballard Power Systems</strong> et <strong>CanEV</strong>, où j'ai mené des analyses thermiques, structurelles et par éléments finis.",
+      p2: "Mon expérience s'étend à une gamme de sujets—de la conception basée sur la simulation de composants automobiles, aux dessins de révision pour le module FCmove® HD+ 100kW, et la robotique autonome au Western Engineering Competition (WEC). Le fil conducteur a été mon plaisir à démêler des problèmes complexes et à simplifier leurs solutions en étapes claires et réalisables.",
+      p3: 'Veuillez découvrir une sélection de projets et expériences ci-dessous.',
     },
     outro:
       "Je suis actuellement ouvert aux opportunités partout en Amérique du Nord. Si vous êtes intéressé à collaborer, à ajouter un nouveau membre à votre équipe, ou simplement à discuter, n'hésitez pas à me contacter!",
@@ -205,32 +215,30 @@ export const localizedContent: Record<'en', LocalizedContent> &
       },
       {
         title: 'Ingénieur Conception R&D',
-        company: 'Université de Victoria',
+        company: 'Université de Victoria | CanEV',
         location: 'Victoria, C.-B.',
         duration: 'Sep 2024 - Déc 2024',
         description:
-          "J'ai développé un outil MATLAB pour effectuer des analyses thermiques et déterminé la réponse statique et transitoire des barres omnibus dans les systèmes de stockage d'énergie haute tension.",
-        technologies: ['MATLAB', 'Analyse CFD', 'Demandes de brevet'],
+          "Intégration de projets, optimisation de la section transversale des barres omnibus haute tension, développement de rendus 3D haute précision, et décommissionnement d'un véhicule électrique partenaire de GM",
+        technologies: ['MATLAB', 'Analyse CFD', 'Analyse FEA'],
       },
       {
         title: 'Ingénieur Agricole',
+        company: 'Wiser Marine Technologies',
         location: 'Victoria, C.-B.',
         duration: 'Mai 2023 - Août 2023',
         description:
-          "Conception et construction d'un prototype pour un nouveau produit agricole, avec un accent sur la durabilité",
-        technologies: ['SolidWorks', 'ANSYS', 'Fabrication lean'],
+          "Développement d'un quai de recherche océanique de 20 pieds. Diagnostic, dépannage et maintenance du FarmBot (robot d'irrigation OC), rédaction de documentation technique pour une équipe multidisciplinaire",
+        technologies: ['SolidWorks', 'FarmBot', 'Documentation technique'],
       },
       {
         title: 'Ingénieur Systèmes Mécaniques',
+        company: 'Ballard Power Systems',
         location: 'Burnaby, C.-B.',
         duration: 'Sep 2021 - Avr 2022',
         description:
-          'Support aux ingénieurs seniors dans la conception et le développement de produits',
-        technologies: [
-          'AutoCAD',
-          'Contrôle qualité',
-          'Documentation technique',
-        ],
+          "Génération de documentation technique, dessins de révision, exécution d'ordres de modification, tests en laboratoire des sous-systèmes du module HD+ 100kW, conception de solutions analytiques pour identifier les zones de chute de pression",
+        technologies: ['Creo', 'SolidWorks', 'Agile', 'Contrôle qualité'],
       },
     ],
     projects: [
@@ -307,6 +315,7 @@ export const getLocalizedContent = (language: Language): LocalizedContent => {
     bio: {
       p1: frenchContent.bio?.p1 || englishContent.bio.p1,
       p2: frenchContent.bio?.p2 || englishContent.bio.p2,
+      p3: frenchContent.bio?.p3 || englishContent.bio.p3,
     },
     outro: frenchContent.outro || englishContent.outro,
     workExperience: englishContent.workExperience.map((englishJob, index) => {

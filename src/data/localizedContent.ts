@@ -185,7 +185,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
           'CNC Machining',
         ],
         thumbnailImg: 'rear_wing_thumbnail.png',
-        link: 'rear_wing.pdf',
+        link: 'Rear_Wing.pdf',
       },
     ],
   },

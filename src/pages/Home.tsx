@@ -215,13 +215,11 @@ function Home() {
     }
   }, [sections])
 
-  // Jean Claude van Damme Easter egg for extremely small screens
-  // Use screen.width instead of window.innerWidth to avoid zoom issues on Safari
+  // Damme son
   const isExtremelySmallScreen =
     typeof window !== 'undefined' &&
-    window.screen &&
-    window.screen.width < 200 &&
-    windowWidth < 200
+    windowWidth < 270 &&
+    (windowWidth < window.screen.width * 0.5 || window.screen.width < 400)
 
   if (isExtremelySmallScreen) {
     return (

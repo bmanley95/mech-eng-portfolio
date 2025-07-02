@@ -175,7 +175,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
       {
         title: 'Rear Wing Elements',
         description:
-          'Fabricated rear wing elements to increase downforce and vehicle stability at high speed while maintaining a low drag profile',
+          'Utilized resin infusion methods to fabricate multi-element rear wings elements to improve downforce and stability at high speeds.',
         technologies: [
           '3D Printing',
           'ANSYS Workbench',

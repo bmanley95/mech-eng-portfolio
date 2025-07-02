@@ -97,7 +97,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, BC',
         duration: 'Aug 2024 - Present',
         description:
-          'Redesigned and manufactured components for the UVic Formula Hybrid car, helping qualify the team for competition for the first time since 2019',
+          'Redesigned and manufactured components for the UVic Formula Hybrid car, helping the team pass all inspections for 2025 competition, first time since 2019.',
         technologies: [
           'SolidWorks',
           'ANSYS',
@@ -112,7 +112,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, BC',
         duration: 'Sep 2024 - Dec 2024',
         description:
-          'Project integration, high voltage bus-bar cross-section optimization, developing high accurate 3D scan renders, and decommissioning of a GM partnered electric vehicle',
+          'Project integration, high voltage bus-bar cross-section optimization, developing high accurate 3D scan renders, and decommissioning of a GM partnered electric vehicle.',
         technologies: ['MATLAB', 'CFD Analysis', 'FEA Analysis'],
         link: 'https://www.uvic.ca/ecs/research-and-industry/ecs-research/index.php',
       },
@@ -122,7 +122,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, BC',
         duration: 'May 2023 - Aug 2023',
         description:
-          'Development of a 20ft ocean research dock. Diagnosis, troubleshooting and maintenance of FarmBot (OC irrigation robot), technical documentation write up for a multidisciplinary team',
+          'Development of a 20ft ocean research dock. Diagnosis, troubleshooting and maintenance of FarmBot (OC irrigation robot), technical documentation write up for a multidisciplinary team.',
         technologies: ['SolidWorks', 'FarmBot', 'Technical Documentation'],
         link: 'https://wisertech.ca/',
       },

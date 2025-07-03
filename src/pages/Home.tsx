@@ -5,6 +5,7 @@ import {
   MapPin,
   ExternalLink,
   Sparkle as LucideSparkle,
+  Cog,
 } from 'lucide-react'
 import styles from './Home.module.css'
 import { getLocalizedContent } from '../data/localizedContent'
@@ -351,6 +352,12 @@ function Home() {
             </div>
           </section>
 
+          <div className={styles.sectionDivider}>
+            <div className={styles.sectionDividerIcon}>
+              <Cog />
+            </div>
+          </div>
+
           <section
             id="projects"
             className={`${styles.section} ${styles.projectSection}`}
@@ -405,6 +412,12 @@ function Home() {
             </div>
           </section>
 
+          <div className={styles.sectionDivider}>
+            <div className={styles.sectionDividerIcon}>
+              <Cog />
+            </div>
+          </div>
+
           <section
             id="experience"
             className={`${styles.section} ${styles.experienceSection}`}
@@ -458,6 +471,12 @@ function Home() {
               ))}
             </div>
           </section>
+
+          <div className={styles.sectionDivider}>
+            <div className={styles.sectionDividerIcon}>
+              <Cog />
+            </div>
+          </div>
 
           <section id="contact" className={styles.section}>
             <h2 className={styles.sectionTitle}>{t.sections.contact}</h2>

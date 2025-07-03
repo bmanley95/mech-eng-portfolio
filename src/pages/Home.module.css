@@ -234,6 +234,60 @@ button:hover,
   padding: 0 var(--space-lg);
 }
 
+.sectionDivider {
+  display: none;
+}
+
+.sectionDivider {
+  display: flex;
+  align-items: center;
+  margin: var(--space-2xl) 0;
+  padding: 0 var(--space-lg);
+}
+
+.sectionDivider::before,
+.sectionDivider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(20, 184, 166, 0.3) 20%,
+    rgba(20, 184, 166, 0.6) 50%,
+    rgba(20, 184, 166, 0.3) 80%,
+    transparent
+  );
+}
+
+.sectionDividerIcon {
+  margin: 0 var(--space-md);
+  padding: var(--space-sm);
+  background-color: var(--color-background);
+  border: 2px solid rgba(20, 184, 166, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sectionDividerIcon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgba(20, 184, 166, 0.7);
+  transition: all 0.3s ease;
+}
+
+.sectionDivider:hover .sectionDividerIcon {
+  border-color: rgba(20, 184, 166, 0.6);
+  transform: rotate(90deg);
+}
+
+.sectionDivider:hover .sectionDividerIcon svg {
+  color: var(--color-accent);
+}
+
 .sectionTitle {
   display: none;
 }
@@ -632,6 +686,10 @@ button:hover,
 
 /* Single column layout at 1024px and below */
 @media (max-width: 1024px) {
+  .sectionDivider {
+    display: none;
+  }
+
   .container {
     padding: var(--space-xl) var(--space-md);
     overflow: visible;

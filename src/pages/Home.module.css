@@ -792,8 +792,16 @@ button:hover,
     padding-top: 30px;
     overflow: visible;
     min-height: auto;
-    margin: 0;
     width: 100%;
+  }
+
+  .container::before {
+    display: block;
+    margin: 20px 0 30pt 0;
+    font-weight: bold;
+    font-size: 24pt;
+    color: black;
+    content: 'Just so you know, there is a button labeled "Resume" to download a PDF of my actual resume in this site.';
   }
 
   .layoutGrid {

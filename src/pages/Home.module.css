@@ -462,19 +462,20 @@ button:hover,
 }
 
 .techBadge {
-  background-color: rgba(20, 184, 166, 0.08);
-  color: var(--color-accent);
+  background-color: rgba(20, 184, 166, 0.15);
+  color: #0a6b63;
   padding: 0.375rem 0.875rem;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 500;
-  border: 1px solid rgba(20, 184, 166, 0.2);
+  border: 1px solid rgba(20, 184, 166, 0.3);
   transition: all 0.2s ease;
 }
 
 .projectItem:hover .techBadge {
-  background-color: rgba(20, 184, 166, 0.15);
-  border-color: rgba(20, 184, 166, 0.3);
+  background-color: rgba(20, 184, 166, 0.25);
+  border-color: rgba(20, 184, 166, 0.4);
+  color: #084d47;
 }
 
 .contactInfo {

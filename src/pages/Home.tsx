@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Linkedin,
   Mail,
@@ -15,33 +15,36 @@ import CalendarModal from '../components/CalendarModal'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { trackPageView, trackEvent } from '../utils/analytics'
 
+type Section = 'about' | 'projects' | 'experience'
+
+const sections: Section[] = ['about', 'projects', 'experience']
+
 function Home() {
   const { language, t } = useI18n()
   const localizedContent = getLocalizedContent(language)
-  const [activeSection, setActiveSection] = useState<string>('about')
+  const [activeSection, setActiveSection] = useState<Section>('about')
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
+  const isScrollingToSection = useRef(false)
 
-  const navigation = [
-    { name: t.navigation.about, href: 'about' },
-    { name: t.navigation.projects, href: 'projects' },
-    { name: t.navigation.experience, href: 'experience' },
-  ]
-
-  const sections = navigation.map((item) => item.href).reverse()
-
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: Section) => {
     trackEvent('navigate_to_section', 'navigation', sectionId)
 
     const element = document.getElementById(sectionId)
     const rightColumn = document.querySelector(`.${styles.rightColumn}`)
     if (element && rightColumn) {
+      isScrollingToSection.current = true
+      setActiveSection(sectionId)
+
       const elementTop = element.offsetTop
       rightColumn.scrollTo({
         top: elementTop,
         behavior: 'smooth',
       })
-      setActiveSection(sectionId)
+
+      setTimeout(() => {
+        isScrollingToSection.current = false
+      }, 800)
     }
   }
 
@@ -71,23 +74,30 @@ function Home() {
     trackPageView('Portfolio - Home')
 
     const handleScroll = () => {
+      if (isScrollingToSection.current) {
+        return
+      }
+
       const rightColumn = document.querySelector(`.${styles.rightColumn}`)
       if (!rightColumn) return
 
-      const scrollPosition = rightColumn.scrollTop + 100
+      const scrollPosition = rightColumn.scrollTop + 50
+
+      let currentSection: Section = 'about'
 
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection((prevActiveSection) => {
-            if (prevActiveSection !== section) {
-              trackEvent('view_section', 'navigation', section)
-            }
-            return section
-          })
-          break
+          currentSection = section
         }
       }
+
+      setActiveSection((prevActiveSection) => {
+        if (prevActiveSection !== currentSection) {
+          trackEvent('view_section', 'navigation', currentSection)
+        }
+        return currentSection
+      })
     }
 
     const handleMouseMove = (e: Event) => {
@@ -98,12 +108,10 @@ function Home() {
       document.documentElement.style.setProperty('--mouse-x', `${x}%`)
       document.documentElement.style.setProperty('--mouse-y', `${y}%`)
 
-      // Show grid on mouse movement (this is the "draft paper" hover effect)
       document.documentElement.style.setProperty('--grid-opacity', '0.3')
     }
 
     const handleMouseLeave = () => {
-      // Hide grid when mouse leaves the window
       document.documentElement.style.setProperty('--grid-opacity', '0')
     }
 
@@ -112,7 +120,6 @@ function Home() {
     }
 
     const handlePageScroll = (e: WheelEvent) => {
-      // Only handle custom scrolling on desktop layout (above 1024px)
       if (!isDesktop()) {
         return
       }
@@ -122,12 +129,10 @@ function Home() {
         `.${styles.rightColumn}`
       ) as HTMLElement
 
-      // If scrolling inside the right column, let it scroll naturally
       if (rightColumn && rightColumn.contains(target)) {
         return
       }
 
-      // Skip custom scrolling for actual mobile devices
       const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
       const isMobileDevice = hasTouch && window.innerWidth <= 1024
 
@@ -135,7 +140,6 @@ function Home() {
         return
       }
 
-      // For desktop (including responsive mode), redirect scroll to right column
       e.preventDefault()
       if (rightColumn) {
         requestAnimationFrame(() => {
@@ -194,7 +198,7 @@ function Home() {
       window.removeEventListener('wheel', handlePageScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [sections])
+  }, [])
 
   const isExtremelySmallScreen =
     typeof window !== 'undefined' &&
@@ -249,16 +253,18 @@ function Home() {
 
             <nav className={styles.groupB}>
               <ul className={styles.navigation}>
-                {navigation.map((item) => (
-                  <li key={item.href} className={styles.navItem}>
+                {sections.map((section) => (
+                  <li key={section} className={styles.navItem}>
                     <button
-                      onClick={() => scrollToSection(item.href)}
+                      onClick={() => scrollToSection(section)}
                       className={`${styles.navLink} ${
-                        activeSection === item.href ? styles.active : ''
+                        activeSection === section ? styles.active : ''
                       }`}
                     >
                       <span className={styles.navIndicator}></span>
-                      <span className={styles.navText}>{item.name}</span>
+                      <span className={styles.navText}>
+                        {t.navigation[section]}
+                      </span>
                     </button>
                   </li>
                 ))}

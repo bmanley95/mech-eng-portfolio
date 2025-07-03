@@ -142,6 +142,7 @@ button:hover,
   transition: color 0.3s ease;
   cursor: pointer;
   text-align: left;
+  will-change: color;
 }
 
 .navLink:hover {
@@ -162,6 +163,7 @@ button:hover,
   width: 2rem;
   background-color: var(--color-text-secondary);
   transition: all 0.3s ease;
+  will-change: width, background-color;
 }
 
 .navLink:hover .navIndicator {

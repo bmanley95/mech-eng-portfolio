@@ -816,10 +816,6 @@ button:hover,
     display: flex;
   }
 
-  .subtitle {
-    font-size: 1.125rem;
-  }
-
   .profilePicture {
     height: 2.75rem;
   }

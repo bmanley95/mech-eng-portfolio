@@ -18,7 +18,7 @@ function CalendarModal({ isOpen, onClose, calendarUrl }: CalendarModalProps) {
 
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'hidden' // Prevent background scrolling
+      document.body.style.overflow = 'hidden'
     }
 
     return () => {

@@ -9,7 +9,6 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
-      // Plugin to replace GA measurement ID in HTML
       {
         name: 'html-transform',
         transformIndexHtml(html) {
@@ -17,7 +16,7 @@ export default defineConfig(({ mode }) => {
         },
       },
     ],
-    base: '/', // Root path for custom domains
+    base: '/',
     build: {
       outDir: 'dist',
     },

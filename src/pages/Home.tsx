@@ -30,7 +30,6 @@ function Home() {
   const sections = navigation.map((item) => item.href).reverse()
 
   const scrollToSection = (sectionId: string) => {
-    // Track navigation clicks
     trackEvent('navigate_to_section', 'navigation', sectionId)
 
     const element = document.getElementById(sectionId)
@@ -46,10 +45,6 @@ function Home() {
   }
 
   useEffect(() => {
-    // Update document title and meta tags based on language
-    document.title = `${localizedContent.name} | Portfolio`
-
-    // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
       metaDescription.setAttribute('content', t.meta.description)
@@ -60,7 +55,6 @@ function Home() {
       document.head.appendChild(newMetaDescription)
     }
 
-    // Update keywords
     const metaKeywords = document.querySelector('meta[name="keywords"]')
     if (metaKeywords) {
       metaKeywords.setAttribute('content', t.meta.keywords)
@@ -73,7 +67,6 @@ function Home() {
   }, [language, t, localizedContent.name])
 
   useEffect(() => {
-    // Track page view on initial load
     trackPageView('Portfolio - Home')
 
     const handleScroll = () => {
@@ -87,7 +80,6 @@ function Home() {
         if (element && element.offsetTop <= scrollPosition) {
           setActiveSection((prevActiveSection) => {
             if (prevActiveSection !== section) {
-              // Track section views
               trackEvent('view_section', 'navigation', section)
             }
             return section
@@ -102,12 +94,10 @@ function Home() {
 
       const x = (mouseEvent.clientX / window.innerWidth) * 100
       const y = (mouseEvent.clientY / window.innerHeight) * 100
-
-      // Update mouse position variables
       document.documentElement.style.setProperty('--mouse-x', `${x}%`)
       document.documentElement.style.setProperty('--mouse-y', `${y}%`)
 
-      // Show grid on mouse movement with reduced opacity
+      // Show grid on mouse movement (this is the "draft paper" hover effect)
       document.documentElement.style.setProperty('--grid-opacity', '0.3')
     }
 
@@ -117,47 +107,42 @@ function Home() {
     }
 
     const isDesktop = () => {
-      // In responsive mode, just check screen width - don't be too strict about touch
       return window.innerWidth > 1024
     }
 
     const handlePageScroll = (e: WheelEvent) => {
       // Only handle custom scrolling on desktop layout (above 1024px)
       if (!isDesktop()) {
-        return // Let default scrolling behavior handle mobile
+        return
       }
 
-      // Don't prevent default if we're in a scrollable area that should scroll naturally
       const target = e.target as HTMLElement
       const rightColumn = document.querySelector(
         `.${styles.rightColumn}`
       ) as HTMLElement
 
+      // If scrolling inside the right column, let it scroll naturally
       if (rightColumn && rightColumn.contains(target)) {
-        // If scrolling inside the right column, let it scroll naturally
         return
       }
 
-      // Check if we have touch support - only skip custom scrolling for actual mobile devices
+      // Skip custom scrolling for actual mobile devices
       const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
       const isMobileDevice = hasTouch && window.innerWidth <= 1024
 
       if (isMobileDevice) {
-        // Only skip custom scrolling for actual mobile devices
         return
       }
 
       // For desktop (including responsive mode), redirect scroll to right column
       e.preventDefault()
       if (rightColumn) {
-        // Use requestAnimationFrame for smoother scrolling
         requestAnimationFrame(() => {
           rightColumn.scrollTop += e.deltaY
         })
       }
     }
 
-    // Initialize mouse position on page load
     const initializeMousePosition = () => {
       document.documentElement.style.setProperty('--mouse-x', '50%')
       document.documentElement.style.setProperty('--mouse-y', '50%')
@@ -170,22 +155,17 @@ function Home() {
       rightColumn.addEventListener('scroll', handleScroll)
     }
 
-    // Initialize on mount
     initializeMousePosition()
 
-    // Add event listeners
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseleave', handleMouseLeave)
     window.addEventListener('wheel', handlePageScroll, { passive: false })
 
-    // Handle window resize to update scroll behavior
     const handleResize = () => {
       const newWidth = window.innerWidth
       setWindowWidth(newWidth)
 
-      // Force re-evaluation of desktop/mobile state
       if (!isDesktop()) {
-        // On mobile, make sure we're not preventing any scroll events
         const rightColumn = document.querySelector(
           `.${styles.rightColumn}`
         ) as HTMLElement
@@ -215,7 +195,6 @@ function Home() {
     }
   }, [sections])
 
-  // Damme son
   const isExtremelySmallScreen =
     typeof window !== 'undefined' &&
     windowWidth < 270 &&
@@ -243,10 +222,8 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.layoutGrid}>
-        {/* Left Column */}
         <header className={styles.leftColumn}>
           <div className={styles.leftContent}>
-            {/* GROUP A */}
             <div className={styles.groupA}>
               <div className={styles.profilePictureContainer}>
                 <img
@@ -269,7 +246,6 @@ function Home() {
               </div>
             </div>
 
-            {/* GROUP B - Navigation */}
             <nav className={styles.groupB}>
               <ul className={styles.navigation}>
                 {navigation.map((item) => (
@@ -289,7 +265,6 @@ function Home() {
             </nav>
           </div>
 
-          {/* GROUP C - Social Links */}
           <div className={styles.groupC}>
             <ul className={styles.socialList}>
               <li>
@@ -351,9 +326,7 @@ function Home() {
           </div>
         </header>
 
-        {/* Right Column */}
         <main className={styles.rightColumn}>
-          {/* GROUP D - About Section */}
           <section id="about" className={styles.section}>
             <h2 className={styles.sectionTitle}>{t.sections.about}</h2>
             <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
@@ -378,7 +351,6 @@ function Home() {
             </div>
           </section>
 
-          {/* GROUP F - Projects Section */}
           <section
             id="projects"
             className={`${styles.section} ${styles.projectSection}`}
@@ -398,7 +370,6 @@ function Home() {
                           trackEvent('click_project', 'projects', project.title)
                       : (e) => {
                           e.preventDefault()
-                          // No link available for this project
                         }
                   }
                 >
@@ -434,7 +405,6 @@ function Home() {
             </div>
           </section>
 
-          {/* GROUP E - Experience Section */}
           <section
             id="experience"
             className={`${styles.section} ${styles.experienceSection}`}
@@ -458,7 +428,6 @@ function Home() {
                           )
                       : (e) => {
                           e.preventDefault()
-                          // No link available for this experience
                         }
                   }
                 >

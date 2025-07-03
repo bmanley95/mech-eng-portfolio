@@ -8,28 +8,24 @@ interface I18nProviderProps {
 }
 
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
-  // Get initial language from localStorage or browser preference
   const getInitialLanguage = (): Language => {
     const stored = localStorage.getItem('portfolio-language')
     if (stored === 'en' || stored === 'fr') {
       return stored
     }
 
-    // Check browser language
     const browserLang = navigator.language.toLowerCase()
     if (browserLang.startsWith('fr')) {
       return 'fr'
     }
 
-    return 'en' // Default to English
+    return 'en'
   }
 
   const [language, setLanguage] = useState<Language>(getInitialLanguage)
 
-  // Update localStorage when language changes
   useEffect(() => {
     localStorage.setItem('portfolio-language', language)
-    // Update document lang attribute for accessibility
     document.documentElement.lang = language
   }, [language])
 

@@ -1,12 +1,5 @@
 import { useContext } from 'react'
-import type { Language, Translations } from '../utils/i18n'
-import { I18nContext } from '../contexts/I18nContext'
-
-interface I18nContextType {
-  language: Language
-  setLanguage: (language: Language) => void
-  t: Translations
-}
+import { I18nContext, type I18nContextType } from '../contexts/I18nContext'
 
 export const useI18n = (): I18nContextType => {
   const context = useContext(I18nContext)

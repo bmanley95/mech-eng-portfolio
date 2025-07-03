@@ -299,9 +299,6 @@ export const localizedContent: Record<'en', LocalizedContent> &
   },
 }
 
-// Backward compatibility export - always uses English version
-export const portfolioConfig = localizedContent.en
-
 // Helper function to get just the portfolio config for a specific language
 export const getPortfolioConfig = (language: Language) => {
   return getLocalizedContent(language)

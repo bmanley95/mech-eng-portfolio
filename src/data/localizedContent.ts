@@ -1,4 +1,3 @@
-// Multi-language portfolio configuration
 import type { Language } from '../utils/i18n'
 
 interface LocalizedContent {
@@ -299,7 +298,6 @@ export const localizedContent: Record<'en', LocalizedContent> &
   },
 }
 
-// Helper function to get just the portfolio config for a specific language
 export const getPortfolioConfig = (language: Language) => {
   return getLocalizedContent(language)
 }
@@ -313,7 +311,6 @@ export const getLocalizedContent = (language: Language): LocalizedContent => {
 
   const frenchContent = localizedContent.fr
 
-  // Deep merge French content with English fallbacks
   return {
     name: frenchContent.name || englishContent.name,
     title: frenchContent.title || englishContent.title,

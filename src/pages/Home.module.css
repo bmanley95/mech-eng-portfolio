@@ -203,18 +203,6 @@ button:hover,
   text-decoration: none;
 }
 
-.resumeLink {
-  color: var(--color-text-secondary);
-  transition: color 0.3s ease;
-  text-decoration: none;
-  font-weight: bold;
-  font-family: var(--font-content);
-  display: flex;
-  align-items: flex-end;
-  gap: var(--space-sm);
-  font-size: 1rem;
-}
-
 .socialLink:hover {
   color: var(--color-accent);
 }
@@ -377,10 +365,6 @@ button:hover,
 
 .spacedParagraphLarge {
   margin-bottom: var(--space-lg);
-}
-
-.spacedParagraphSmall {
-  margin-bottom: var(--space-sm);
 }
 
 .projectDescription {

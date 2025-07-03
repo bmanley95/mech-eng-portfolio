@@ -1,4 +1,4 @@
-/* CSS Reset and Global Styles */
+/* CSS Reset + Global Styles + Variables */
 *,
 *::before,
 *::after {
@@ -71,7 +71,7 @@ h6 {
     'Azeret Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
     Courier, monospace;
 
-  /* Spacing Scale */
+  /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -80,14 +80,12 @@ h6 {
   --space-2xl: 3rem;
   --space-3xl: 4rem;
 
-  /* Border Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-full: 9999px;
 
-  /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg:
@@ -109,7 +107,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Engineering grid background with mouse hover effect */
+/* Drafting paper background with mouse hover effect */
 body::before {
   content: '';
   position: fixed;
@@ -149,7 +147,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Utility Classes */
 .heading-font {
   font-family: var(--font-heading);
 }
@@ -182,7 +179,6 @@ html {
   overflow: hidden;
 }
 
-/* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -200,13 +196,11 @@ html {
   background: #6b7280;
 }
 
-/* Focus styles */
 *:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* Selection styles */
 ::selection {
   background-color: var(--color-accent);
   color: #ffffff;

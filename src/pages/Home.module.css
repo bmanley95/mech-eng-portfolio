@@ -224,7 +224,7 @@ button:hover,
 }
 
 .section {
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
   min-height: auto;
   display: flex;
   flex-direction: column;

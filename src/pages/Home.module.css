@@ -472,7 +472,8 @@ button:hover,
   transition: all 0.2s ease;
 }
 
-.projectItem:hover .techBadge {
+.projectItem:hover .techBadge,
+.experienceItem:hover .techBadge {
   background-color: rgba(20, 184, 166, 0.25);
   border-color: rgba(20, 184, 166, 0.4);
   color: #084d47;
@@ -778,5 +779,220 @@ button:hover,
   .projectItem .projectThumbnail {
     width: 100%;
     height: 160px;
+  }
+}
+
+@media print {
+  * {
+    box-sizing: border-box;
+  }
+
+  .container {
+    padding: 0;
+    padding-top: 30px;
+    overflow: visible;
+    min-height: auto;
+    margin: 0;
+    width: 100%;
+  }
+
+  .layoutGrid {
+    display: block;
+    height: auto;
+    max-width: none;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0 12pt;
+    overflow: visible;
+    transform: none;
+    mask: none;
+    -webkit-mask: none;
+    max-width: none;
+  }
+
+  .navigation,
+  .socialList,
+  .contactButton,
+  .sparkleContainer,
+  .easterEggContainer,
+  .groupB {
+    display: none !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .mainHeading {
+    font-size: 24pt;
+    color: black;
+    margin-bottom: 8pt;
+    page-break-after: avoid;
+  }
+
+  .subtitle {
+    font-size: 14pt;
+    color: black;
+    margin-bottom: 6pt;
+  }
+
+  .tagline {
+    font-size: 10pt;
+    color: #333;
+    margin-bottom: 12pt;
+  }
+
+  .experienceTitle,
+  .projectTitle {
+    color: black;
+    font-size: 12pt;
+    font-weight: bold;
+    page-break-after: avoid;
+  }
+
+  .techBadge {
+    background: white;
+    border: 1px solid black;
+    color: black;
+    padding: 2pt 6pt;
+    margin: 1pt 2pt 1pt 0;
+    border-radius: 3pt;
+    font-size: 8pt;
+    display: inline-block;
+  }
+
+  .experienceItem:hover,
+  .projectItem:hover,
+  .experienceItem:hover .experienceTitle,
+  .projectItem:hover .projectTitle,
+  .projectItem:hover .techBadge,
+  .experienceItem:hover .techBadge {
+    background: white;
+    color: black;
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .experienceItem,
+  .projectItem {
+    padding: 8pt 0;
+    margin-bottom: 12pt;
+    border: none;
+    background: white;
+    page-break-inside: avoid;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .projectThumbnail {
+    width: 60pt;
+    height: 40pt;
+    border: 1px solid #ccc;
+    margin-right: 12pt;
+    flex-shrink: 0;
+  }
+
+  .projectThumbnail img {
+    filter: grayscale(100%) contrast(120%);
+  }
+
+  .projectContent {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .experienceItem[href]:after {
+    content: ' (' attr(href) ')';
+    font-size: 8pt;
+    color: #666;
+  }
+
+  .externalLinkIcon {
+    display: none;
+  }
+
+  .section {
+    margin-bottom: 16pt;
+  }
+
+  .section:last-child {
+    padding: 0;
+  }
+
+  .sectionTitle {
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+    margin-top: 16pt;
+    margin-bottom: 8pt;
+    page-break-after: avoid;
+    text-transform: uppercase;
+    letter-spacing: 1pt;
+    box-shadow: none;
+  }
+
+  .contactInfo {
+    margin-bottom: 12pt;
+  }
+
+  .profilePicture,
+  .mobileProfilePicture {
+    width: 60pt;
+    height: 60pt;
+    margin-bottom: 8pt;
+  }
+
+  .profilePictureContainer {
+    display: block;
+  }
+
+  .mobileProfilePictureContainer {
+    display: none;
+  }
+
+  .projectDescription,
+  .sectionContent {
+    color: black;
+    font-size: 10pt;
+    line-height: 1.3;
+  }
+
+  .jobLocation,
+  .jobMeta {
+    color: #333;
+    font-size: 9pt;
+  }
+
+  .groupA {
+    page-break-after: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    orphans: 3;
+    widows: 3;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
   }
 }

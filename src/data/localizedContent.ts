@@ -96,7 +96,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
         location: 'Victoria, BC',
         duration: 'Aug 2024 - Present',
         description:
-          'Redesigned and manufactured components for the UVic Formula Hybrid car, helping the team pass all inspections for 2025 competition, first time since 2019.',
+          'Redesigned and manufactured components for the UVic Formula Hybrid car, helping the team pass all inspections for 2025 competition, the first time since 2019.',
         technologies: [
           'SolidWorks',
           'ANSYS',

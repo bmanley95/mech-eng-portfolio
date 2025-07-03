@@ -453,12 +453,12 @@ function Home() {
                     )}
                   </h3>
                   <p className={styles.jobMeta}>
-                    {job.title} | {job.duration}
-                  </p>
-                  <p className={styles.jobLocation}>
+                    {job.duration}
+                    {' | '}
                     <MapPin className={styles.contactIcon} />
                     {job.location}
                   </p>
+                  <p className={styles.jobTitle}>{job.title}</p>
                   <p className={styles.jobDescription}>{job.description}</p>
                   <div className={styles.techBadgesContainer}>
                     {job.technologies.map((tech, techIndex) => (

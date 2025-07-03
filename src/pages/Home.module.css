@@ -79,7 +79,6 @@ button:hover,
   object-fit: cover;
 }
 
-/* Mobile layout - stack vertically */
 @media (max-width: 1024px) {
   .headingContainer {
     flex-direction: column;
@@ -100,7 +99,7 @@ button:hover,
 
 .subtitle {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-text-primary);
   text-align: left;
@@ -299,7 +298,6 @@ button:hover,
   flex: 1;
 }
 
-/* Base styles for interactive items */
 .experienceItem,
 .projectItem {
   padding: var(--space-lg) 0;
@@ -314,12 +312,17 @@ button:hover,
   color: inherit;
 }
 
+.experienceItem:last-child,
+.projectItem:last-child {
+  margin-bottom: 0;
+}
+
 .experienceItem {
   flex-direction: column;
 }
 
 .projectItem {
-  gap: var(--space-lg);
+  gap: var(--space-md);
   align-items: flex-start;
   padding: var(--space-xl) 0;
 }
@@ -356,7 +359,7 @@ button:hover,
   height: 1.125rem;
   flex-shrink: 0;
   display: inline;
-  vertical-align: text-top;
+  vertical-align: baseline;
   margin-left: 0.25rem;
 }
 
@@ -392,7 +395,7 @@ button:hover,
 .projectTitle {
   color: var(--color-text-primary);
   transition: color 0.3s ease;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
   margin-bottom: var(--space-xs);
@@ -469,17 +472,22 @@ button:hover,
   margin-bottom: var(--space-sm);
 }
 
-.jobLocation,
-.jobMeta {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-sm);
+.jobTitle {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-.jobLocation {
+.jobMeta {
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+}
+
+.jobTitle,
+.jobMeta {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
 }
 
 .projectDescription {
@@ -522,6 +530,7 @@ button:hover,
   align-items: center;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
+  font-size: 0.8rem;
 }
 
 .contactIcon {

@@ -453,10 +453,10 @@ function Home() {
                     )}
                   </h3>
                   <p className={styles.jobMeta}>
-                    {job.duration}
-                    {' | '}
                     <MapPin className={styles.contactIcon} />
                     {job.location}
+                    {' | '}
+                    {job.duration}
                   </p>
                   <p className={styles.jobTitle}>{job.title}</p>
                   <p className={styles.jobDescription}>{job.description}</p>

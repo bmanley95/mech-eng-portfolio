@@ -123,7 +123,8 @@ export const localizedContent: Record<'en', LocalizedContent> &
         description:
           'Development of a 20ft ocean research dock. Diagnosis, troubleshooting and maintenance of FarmBot (OC irrigation robot), technical documentation write up for a multidisciplinary team.',
         technologies: ['SolidWorks', 'FarmBot', 'Technical Documentation'],
-        link: 'https://wisertech.ca/',
+        // Wiser doesn't have a https website only an insecure http one so leaving out the link
+        link: '',
       },
       {
         title: 'Mechanical Systems Engineer',
@@ -231,7 +232,8 @@ export const localizedContent: Record<'en', LocalizedContent> &
         description:
           "Développement d'un quai de recherche océanique de 20 pieds. Diagnostic, dépannage et maintenance du FarmBot (robot d'irrigation OC), rédaction de documentation technique pour une équipe multidisciplinaire.",
         technologies: ['SolidWorks', 'FarmBot', 'Documentation technique'],
-        link: 'https://wisertech.ca/',
+        // Wiser doesn't have a https website only an insecure http one so leaving out the link
+        link: '',
       },
       {
         title: 'Ingénieur Systèmes Mécaniques',

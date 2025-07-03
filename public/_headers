@@ -1,0 +1,19 @@
+# Security headers for better protection
+/*
+  # Prevent framing (clickjacking protection)
+  X-Frame-Options: DENY
+  
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Enable XSS filtering
+  X-XSS-Protection: 1; mode=block
+  
+  # Referrer policy for privacy
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Permissions policy
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  
+  # Strict transport security (if using HTTPS)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload

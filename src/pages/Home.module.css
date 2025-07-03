@@ -319,6 +319,11 @@ button:hover,
   margin-bottom: 0;
 }
 
+.experienceItem.noLink,
+.projectItem.noLink {
+  cursor: default;
+}
+
 .experienceItem {
   flex-direction: column;
 }

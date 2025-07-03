@@ -5,42 +5,50 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Content Security Policy for Google Calendar integration and Analytics -->
+    <!-- Content Security Policy - Strengthened for better security -->
     <meta
       http-equiv="Content-Security-Policy"
       content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://calendar.google.com https://accounts.google.com https://ssl.gstatic.com https://www.gstatic.com https://fonts.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://calendar.google.com https://accounts.google.com;
-      font-src 'self' https://fonts.gstatic.com https://calendar.google.com;
-      img-src 'self' data: https: blob:;
-      connect-src 'self' https://apis.google.com https://calendar.google.com https://accounts.google.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com;
-      frame-src 'self' https://calendar.google.com https://accounts.google.com;
+      script-src 'self' 'nonce-analytics' https://www.googletagmanager.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com;
+      frame-src 'none';
       object-src 'none';
       base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
     "
     />
 
     <title>Brandon Manley | Portfolio</title>
 
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-    ></script>
+    <!-- Google Analytics 4 - Only load if measurement ID is configured -->
     <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
+      const GA_MEASUREMENT_ID = 'GA_MEASUREMENT_ID'
+      if (GA_MEASUREMENT_ID && GA_MEASUREMENT_ID !== 'GA_MEASUREMENT_ID') {
+        // Load Google Analytics script
+        const script = document.createElement('script')
+        script.async = true
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+        document.head.appendChild(script)
+        
+        // Initialize Google Analytics
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        
+        // Privacy-friendly configuration
+        gtag('config', GA_MEASUREMENT_ID, {
+          anonymize_ip: true,
+          allow_google_signals: false,
+          allow_ad_personalization_signals: false,
+        })
       }
-      gtag('js', new Date())
-
-      // Privacy-friendly configuration
-      gtag('config', 'GA_MEASUREMENT_ID', {
-        anonymize_ip: true,
-        allow_google_signals: false,
-        allow_ad_personalization_signals: false,
-      })
     </script>
 
     <meta name="title" content="Brandon Manley | Mechanical Engineer, EIT" />
@@ -101,8 +109,6 @@
     />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//calendar.google.com" />
-    <link rel="dns-prefetch" href="//apis.google.com" />
 
     <!-- Google Fonts with performance optimizations - Non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

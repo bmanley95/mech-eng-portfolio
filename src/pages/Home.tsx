@@ -8,6 +8,7 @@ import {
   Cog,
 } from 'lucide-react'
 import styles from './Home.module.css'
+import { SafeHTML } from '../components/SafeHTML'
 import { getLocalizedContent } from '../data/localizedContent'
 import { useI18n } from '../hooks/useI18n'
 import Sparkle from '../components/Sparkle'
@@ -337,23 +338,17 @@ function Home() {
           <section id="about" className={styles.section}>
             <h2 className={styles.sectionTitle}>{t.sections.about}</h2>
             <div className={`${styles.sectionContent} ${styles.aboutContent}`}>
-              <p
+              <SafeHTML
+                content={localizedContent.bio.p1}
                 className={styles.spacedParagraph}
-                dangerouslySetInnerHTML={{
-                  __html: localizedContent.bio.p1,
-                }}
               />
-              <p
+              <SafeHTML
+                content={localizedContent.bio.p2}
                 className={styles.spacedParagraph}
-                dangerouslySetInnerHTML={{
-                  __html: localizedContent.bio.p2,
-                }}
               />
-              <p
+              <SafeHTML
+                content={localizedContent.bio.p3}
                 className={styles.spacedParagraph}
-                dangerouslySetInnerHTML={{
-                  __html: localizedContent.bio.p3,
-                }}
               />
             </div>
           </section>
@@ -376,7 +371,7 @@ function Home() {
                   href={project.link || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.projectItem}
+                  className={`${styles.projectItem} ${!project.link ? styles.noLink : ''}`}
                   onClick={
                     project.link
                       ? () =>
@@ -434,7 +429,7 @@ function Home() {
                   href={job.link || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.experienceItem}
+                  className={`${styles.experienceItem} ${!job.link ? styles.noLink : ''}`}
                   onClick={
                     job.link
                       ? () =>

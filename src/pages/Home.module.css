@@ -396,11 +396,16 @@ button:hover,
 .experienceTitle,
 .projectTitle {
   color: var(--color-text-primary);
+  font-family: var(--font-heading);
   transition: color 0.3s ease;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.projectTitle {
+  margin-bottom: 0;
 }
 
 .projectItem:hover .projectThumbnail {
@@ -467,11 +472,6 @@ button:hover,
 
 .sparkleContainer {
   position: relative;
-}
-
-.sectionTitleStyle {
-  font-family: var(--font-heading);
-  margin-bottom: var(--space-sm);
 }
 
 .jobTitle {

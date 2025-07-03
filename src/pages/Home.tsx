@@ -394,9 +394,7 @@ function Home() {
                     />
                   </div>
                   <div className={styles.projectContent}>
-                    <h3
-                      className={`${styles.projectTitle} ${styles.sectionTitleStyle}`}
-                    >
+                    <h3 className={styles.projectTitle}>
                       {project.title}
                       {project.link && (
                         <ExternalLink className={styles.externalLinkIcon} />
@@ -450,9 +448,7 @@ function Home() {
                         }
                   }
                 >
-                  <h3
-                    className={`${styles.experienceTitle} ${styles.sectionTitleStyle}`}
-                  >
+                  <h3 className={styles.experienceTitle}>
                     {job.company}
                     {job.link && (
                       <ExternalLink className={styles.externalLinkIcon} />

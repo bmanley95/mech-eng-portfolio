@@ -78,7 +78,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
     email: 'brm2495@gmail.com',
     tagline: 'Resourceful, methodical, meticulous.',
     calendarUrl:
-      'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Qn6VCoz3I8WdYPB-Zu4HUw2bq9wQJUeXDGKx9dJY_z4W8NZp1w73j7OdtOZQai8bcyQhuNy4Q?gv=true',
+      'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UsH1ZA-unoHvKtoIIMU_nZkTpzDf2XSMJ76dPDECSe2fq3nT59wmYX4-o_0pttfIhIoNaDvPT?gv=true',
     social: {
       linkedin: 'https://www.linkedin.com/in/brandon-manley95/',
     },

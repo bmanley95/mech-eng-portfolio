@@ -147,7 +147,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
       {
         title: 'Composite Seat',
         description:
-          'The initial seat design lacked sufficient head clearance and caused discomfort during extended use. To address these issues and comply with competition regulations, I redesigned the seat emphasizing ergonomics, lateral stability, and manufacturability',
+          'The initial seat design lacked sufficient head clearance and caused discomfort during extended use. To address these issues and comply with competition regulations, we redesigned the seat emphasizing ergonomics, lateral stability, and manufacturability',
         technologies: [
           'SolidWorks',
           'Finite Element Analysis',

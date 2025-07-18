@@ -75,7 +75,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
     name: 'Brandon Manley',
     title: 'Mechanical Engineer, EIT',
     location: 'Victoria, British Columbia 🇨🇦',
-    email: 'brm2495@gmail.com',
+    email: 'work.brandon.manley@gmail.com',
     tagline: 'Resourceful, Adaptable, Meticulous',
     calendarUrl:
       'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2UsH1ZA-unoHvKtoIIMU_nZkTpzDf2XSMJ76dPDECSe2fq3nT59wmYX4-o_0pttfIhIoNaDvPT?gv=true',

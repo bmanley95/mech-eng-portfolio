@@ -16,9 +16,9 @@ import CalendarModal from '../components/CalendarModal'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { trackPageView, trackEvent } from '../utils/analytics'
 
-type Section = 'about' | 'projects' | 'experience'
+type Section = 'about' | 'experience' | 'projects'
 
-const sections: Section[] = ['about', 'projects', 'experience']
+const sections: Section[] = ['about', 'experience', 'projects']
 
 function Home() {
   const { language, t } = useI18n()
@@ -360,64 +360,6 @@ function Home() {
           </div>
 
           <section
-            id="projects"
-            className={`${styles.section} ${styles.projectSection}`}
-          >
-            <h2 className={styles.sectionTitle}>{t.sections.projects}</h2>
-            <div className={styles.sectionContent}>
-              {localizedContent.projects.map((project, index) => (
-                <a
-                  key={index}
-                  href={project.link || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.projectItem} ${!project.link ? styles.noLink : ''}`}
-                  onClick={
-                    project.link
-                      ? () =>
-                          trackEvent('click_project', 'projects', project.title)
-                      : (e) => {
-                          e.preventDefault()
-                        }
-                  }
-                >
-                  <div className={styles.projectThumbnail}>
-                    <img
-                      src={project.thumbnailImg || 'project_placeholder.png'}
-                      alt={`${project.title} ${t.accessibility.projectThumbnailAlt}`}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className={styles.projectContent}>
-                    <h3 className={styles.projectTitle}>
-                      {project.title}
-                      {project.link && (
-                        <ExternalLink className={styles.externalLinkIcon} />
-                      )}
-                    </h3>
-                    <p className={styles.projectDescription}>
-                      {project.description}
-                    </p>
-                    <div className={styles.techBadgesContainer}>
-                      {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className={styles.techBadge}>
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <div className={styles.sectionDivider}>
-            <div className={styles.sectionDividerIcon}>
-              <Cog />
-            </div>
-          </div>
-
-          <section
             id="experience"
             className={`${styles.section} ${styles.experienceSection}`}
           >
@@ -463,6 +405,64 @@ function Home() {
                         {tech}
                       </span>
                     ))}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <div className={styles.sectionDivider}>
+            <div className={styles.sectionDividerIcon}>
+              <Cog />
+            </div>
+          </div>
+
+          <section
+            id="projects"
+            className={`${styles.section} ${styles.projectSection}`}
+          >
+            <h2 className={styles.sectionTitle}>{t.sections.projects}</h2>
+            <div className={styles.sectionContent}>
+              {localizedContent.projects.map((project, index) => (
+                <a
+                  key={index}
+                  href={project.link || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.projectItem} ${!project.link ? styles.noLink : ''}`}
+                  onClick={
+                    project.link
+                      ? () =>
+                          trackEvent('click_project', 'projects', project.title)
+                      : (e) => {
+                          e.preventDefault()
+                        }
+                  }
+                >
+                  <div className={styles.projectThumbnail}>
+                    <img
+                      src={project.thumbnailImg || 'project_placeholder.png'}
+                      alt={`${project.title} ${t.accessibility.projectThumbnailAlt}`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className={styles.projectContent}>
+                    <h3 className={styles.projectTitle}>
+                      {project.title}
+                      {project.link && (
+                        <ExternalLink className={styles.externalLinkIcon} />
+                      )}
+                    </h3>
+                    <p className={styles.projectDescription}>
+                      {project.description}
+                    </p>
+                    <div className={styles.techBadgesContainer}>
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className={styles.techBadge}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </a>
               ))}

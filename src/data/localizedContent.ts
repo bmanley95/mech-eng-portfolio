@@ -85,7 +85,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
     bio: {
       p1: 'Recent Mechanical Engineering graduate from the University of Victoria, with a background in composite design and manufacturing. Professional history includes roles at <strong>Ballard Power Systems</strong> and <strong>CanEV</strong>, where I conducted thermal, structural, and finite element analyses.',
       p2: 'My experience ranges from simulation-driven design of automotive components, to redline drawings for the <strong>FCmove® HD+ 100kW module</strong>, to autonomous robotics at the <strong>Western Engineering Competition (WEC)</strong>. The consistent theme throughout has been my ability to solve complex problems with strong fundamentals.',
-      p3: 'Please enjoy a selection of projects and experience below.',
+      p3: `Below you'll find highlights from my professional experience and key projects.`,
     },
     outro:
       "I am open to opportunities anywhere in North America, especially those in the automotive or marine sector. If you're interested in collaborating, adding a new member to your team, or just want to chat, please do reach out.",
@@ -194,7 +194,7 @@ export const localizedContent: Record<'en', LocalizedContent> &
     bio: {
       p1: "Diplômé récent en génie mécanique de l'Université de Victoria, avec une expertise en conception et fabrication de composites. Mon expérience professionnelle inclut des rôles chez <strong>Ballard Power Systems</strong> et <strong>CanEV</strong>, où j'ai mené des analyses thermiques, structurelles et par éléments finis.",
       p2: "Mon expérience s'étend de la conception basée sur la simulation de composants automobiles, aux dessins de révision pour le <strong>module FCmove® HD+ 100kW</strong>, jusqu'à la robotique autonome au <strong>Western Engineering Competition (WEC)</strong>. Le thème constant dans tout cela a été ma capacité à résoudre des problèmes complexes avec des bases solides.",
-      p3: 'Veuillez découvrir une sélection de projets et expériences ci-dessous.',
+      p3: 'Ci-dessous, vous trouverez les points saillants de mon expérience professionnelle et de mes projets clés.',
     },
     outro:
       "Je suis ouvert aux opportunités partout en Amérique du Nord, particulièrement dans les secteurs automobile ou maritime. Si vous êtes intéressé à collaborer, à ajouter un nouveau membre à votre équipe, ou simplement à discuter, n'hésitez pas à me contacter.",

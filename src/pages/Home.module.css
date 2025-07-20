@@ -761,14 +761,43 @@ button:hover,
     margin-right: calc(-1 * var(--space-md));
     padding-left: var(--space-md);
     padding-right: var(--space-md);
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    border-top: 1px solid var(--color-accent-border);
+    border-bottom: 1px solid var(--color-accent-border);
     border-left: none;
     border-right: none;
-    transition: all 0.3s ease;
     border-radius: 0;
+    background-color: var(--color-background);
   }
 
+  .experienceItem .experienceTitle,
+  .projectItem .projectTitle {
+    color: var(--color-accent);
+  }
+
+  .experienceItem .externalLinkIcon,
+  .projectItem .externalLinkIcon {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+
+  .experienceItem .techBadge,
+  .projectItem .techBadge {
+    background-color: rgba(20, 184, 166, 0.25);
+    border-color: rgba(20, 184, 166, 0.4);
+    color: #084d47;
+  }
+
+  .projectItem .projectThumbnail {
+    border-color: rgba(20, 184, 166, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .projectItem .projectThumbnail img {
+    transform: scale(1.03);
+  }
+
+  /* Disable hover effects at this breakpoint */
   .experienceItem:hover,
   .projectItem:hover {
     background-color: var(--color-background);
@@ -776,6 +805,43 @@ button:hover,
     border-bottom: 1px solid var(--color-accent-border);
     border-left: none;
     border-right: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .experienceItem:hover .experienceTitle,
+  .projectItem:hover .projectTitle {
+    color: var(--color-accent);
+  }
+
+  .experienceItem:hover .externalLinkIcon,
+  .projectItem:hover .externalLinkIcon {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+
+  .experienceItem:hover .techBadge,
+  .projectItem:hover .techBadge {
+    background-color: rgba(20, 184, 166, 0.25);
+    border-color: rgba(20, 184, 166, 0.4);
+    color: #084d47;
+  }
+
+  .projectItem:hover .projectThumbnail {
+    border-color: rgba(20, 184, 166, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .projectItem:hover .projectThumbnail img {
+    transform: scale(1.03);
+  }
+
+  /* Disable section-level hover effects */
+  .experienceSection:hover .experienceItem:not(:hover),
+  .projectSection:hover .projectItem:not(:hover) {
+    opacity: 1;
+    transform: none;
   }
 
   .sectionTitle {

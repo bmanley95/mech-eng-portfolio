@@ -17,6 +17,7 @@
     "clean": "rm -rf node_modules dist"
   },
   "dependencies": {
+    "@fireworks-js/react": "^2.10.8",
     "lucide-react": "^0.523.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import {
   Linkedin,
   Mail,
@@ -15,10 +15,83 @@ import Sparkle from '../components/Sparkle'
 import CalendarModal from '../components/CalendarModal'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { trackPageView, trackEvent } from '../utils/analytics'
+import { Fireworks, type FireworksHandlers } from '@fireworks-js/react'
 
 type Section = 'about' | 'experience' | 'projects'
 
-const sections: Section[] = ['about', 'experience', 'projects']
+const SECTIONS: Section[] = ['about', 'experience', 'projects']
+
+const AUDIO_FILES = [
+  'celebration.mp3',
+  'all_i_do_is_win.mp3',
+  'were_finally_landing.mp3',
+] as const
+
+const FIREWORKS_OPTIONS = {
+  autoresize: true,
+  opacity: 0.8,
+  acceleration: 1.05,
+  friction: 0.97,
+  gravity: 1.5,
+  particles: 120,
+  traceLength: 3,
+  traceSpeed: 10,
+  explosion: 2,
+  intensity: 40,
+  flickering: 20,
+  lineStyle: 'round' as const,
+  hue: {
+    min: 0,
+    max: 360,
+  },
+  delay: {
+    min: 30,
+    max: 60,
+  },
+  rocketsPoint: {
+    min: 50,
+    max: 50,
+  },
+  lineWidth: {
+    explosion: {
+      min: 1,
+      max: 3,
+    },
+    trace: {
+      min: 1,
+      max: 2,
+    },
+  },
+  brightness: {
+    min: 50,
+    max: 80,
+  },
+  decay: {
+    min: 0.015,
+    max: 0.03,
+  },
+  mouse: {
+    click: false,
+    move: false,
+    max: 1,
+  },
+  sound: {
+    enabled: true,
+    files: ['/explosion0.mp3', '/explosion1.mp3', '/explosion2.mp3'],
+    volume: {
+      min: 3,
+      max: 5,
+    },
+  },
+}
+
+const FIREWORKS_OPTIONS_MOBILE = {
+  ...FIREWORKS_OPTIONS,
+  particles: 60,
+  intensity: 20,
+  flickering: 30,
+  traceLength: 2,
+}
 
 function Home() {
   const { language, t } = useI18n()
@@ -26,7 +99,15 @@ function Home() {
   const [activeSection, setActiveSection] = useState<Section>('about')
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
+  const [currentAudioIndex, setCurrentAudioIndex] = useState(0)
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false)
   const isScrollingToSection = useRef(false)
+  const fireworksRef = useRef<FireworksHandlers>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  const isDesktop = useCallback(() => {
+    return windowWidth > 1024
+  }, [windowWidth])
 
   const scrollToSection = (sectionId: Section) => {
     trackEvent('navigate_to_section', 'navigation', sectionId)
@@ -86,7 +167,7 @@ function Home() {
 
       let currentSection: Section = 'about'
 
-      for (const section of sections) {
+      for (const section of SECTIONS) {
         const element = document.getElementById(section)
         if (element && element.offsetTop <= scrollPosition) {
           currentSection = section
@@ -114,10 +195,6 @@ function Home() {
 
     const handleMouseLeave = () => {
       document.documentElement.style.setProperty('--grid-opacity', '0')
-    }
-
-    const isDesktop = () => {
-      return window.innerWidth > 1024
     }
 
     const handlePageScroll = (e: WheelEvent) => {
@@ -199,7 +276,70 @@ function Home() {
       window.removeEventListener('wheel', handlePageScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [isDesktop])
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    const handleSongEnd = () => {
+      const nextIndex = (currentAudioIndex + 1) % AUDIO_FILES.length
+      setCurrentAudioIndex(nextIndex)
+
+      audio.src = `/${AUDIO_FILES[nextIndex]}`
+      audio.volume = 0.3
+
+      if (isAudioPlaying) {
+        audio.play().catch((error) => {
+          console.warn('Audio autoplay blocked on mobile:', error)
+          setIsAudioPlaying(false)
+        })
+      }
+    }
+
+    audio.addEventListener('ended', handleSongEnd)
+
+    return () => {
+      audio.removeEventListener('ended', handleSongEnd)
+    }
+  }, [currentAudioIndex, isAudioPlaying])
+
+  const toggleParty = () => {
+    if (!fireworksRef.current) {
+      return
+    }
+
+    try {
+      if (fireworksRef.current.isRunning) {
+        fireworksRef.current.waitStop()
+
+        if (audioRef.current && !audioRef.current.paused) {
+          audioRef.current.pause()
+          setIsAudioPlaying(false)
+        }
+      } else {
+        fireworksRef.current.start()
+
+        if (audioRef.current) {
+          if (!audioRef.current.src || audioRef.current.src === '') {
+            audioRef.current.src = `/${AUDIO_FILES[currentAudioIndex]}`
+            audioRef.current.volume = 0.3
+          }
+
+          audioRef.current
+            .play()
+            .then(() => {
+              setIsAudioPlaying(true)
+            })
+            .catch(() => {
+              setIsAudioPlaying(false)
+            })
+        }
+      }
+    } catch (error) {
+      console.error('Error toggling fireworks:', error)
+    }
+  }
 
   const isExtremelySmallScreen =
     typeof window !== 'undefined' &&
@@ -227,6 +367,28 @@ function Home() {
 
   return (
     <div className={styles.container}>
+      <Fireworks
+        ref={fireworksRef}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          top: 0,
+          zIndex: 3,
+          pointerEvents: 'none',
+        }}
+        options={isDesktop() ? FIREWORKS_OPTIONS : FIREWORKS_OPTIONS_MOBILE}
+        autostart={false}
+      />
+      <audio
+        ref={audioRef}
+        preload="none"
+        style={{ display: 'none' }}
+        playsInline={true}
+        muted={false}
+      />
       <div className={styles.layoutGrid}>
         <header className={styles.leftColumn}>
           <div className={styles.leftContent}>
@@ -254,7 +416,7 @@ function Home() {
 
             <nav className={styles.groupB}>
               <ul className={styles.navigation}>
-                {sections.map((section) => (
+                {SECTIONS.map((section) => (
                   <li key={section} className={styles.navItem}>
                     <button
                       onClick={() => scrollToSection(section)}
@@ -329,6 +491,16 @@ function Home() {
                 >
                   {t.actions.resume}
                 </a>
+              </li>
+              <li>
+                <button
+                  onClick={toggleParty}
+                  aria-label={'Celebrate'}
+                  className={styles.party}
+                  type="button"
+                >
+                  🍾
+                </button>
               </li>
             </ul>
           </div>
